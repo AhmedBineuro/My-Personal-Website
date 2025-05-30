@@ -1,0 +1,10 @@
+:root{
+    --bg-color: #21152c;
+    --primary-color:rgba(83, 71, 94,0.7);
+    
+    --buttonOff-color:rgb(74, 23, 122);
+    --buttonHover-color:rgb(153, 58, 255);
+    --buttonOn-color: rgb(210, 168, 255);
+    --buttonOnOutline-color: rgb(255, 255, 255);
+    --buttonShadow-color:rgba(219, 180, 255, 0.549);
+}

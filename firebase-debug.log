@@ -1,0 +1,35 @@
+[debug] [2025-05-30T01:29:32.943Z] ----------------------------------------------------------------------
+[debug] [2025-05-30T01:29:32.946Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\purea\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2025-05-30T01:29:32.947Z] CLI Version:   14.5.0
+[debug] [2025-05-30T01:29:32.947Z] Platform:      win32
+[debug] [2025-05-30T01:29:32.947Z] Node Version:  v24.1.0
+[debug] [2025-05-30T01:29:32.947Z] Time:          Thu May 29 2025 18:29:32 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-05-30T01:29:32.947Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-30T01:29:33.206Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-30T01:29:33.207Z] > authorizing via signed-in user (dynamic.bineuro@gmail.com)
+[debug] [2025-05-30T01:29:33.207Z] [iam] checking project dynamicbineurowebsite for permissions ["firebase.projects.get"]
+[debug] [2025-05-30T01:29:33.207Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.208Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.209Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite:testIamPermissions [none]
+[debug] [2025-05-30T01:29:33.209Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite:testIamPermissions x-goog-quota-user=projects/dynamicbineurowebsite
+[debug] [2025-05-30T01:29:33.209Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-30T01:29:33.310Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite:testIamPermissions 200
+[debug] [2025-05-30T01:29:33.310Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-30T01:29:33.311Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.311Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.311Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/dynamicbineurowebsite/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-05-30T01:29:33.311Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/dynamicbineurowebsite/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/dynamicbineurowebsite
+[debug] [2025-05-30T01:29:33.740Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/dynamicbineurowebsite/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-05-30T01:29:33.740Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/dynamicbineurowebsite/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-05-30T01:29:33.741Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.741Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.741Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite [none]
+[debug] [2025-05-30T01:29:33.836Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite 200
+[debug] [2025-05-30T01:29:33.837Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/dynamicbineurowebsite {"projectNumber":"788647486588","projectId":"dynamicbineurowebsite","lifecycleState":"ACTIVE","name":"DynamicBineuroWebsite","labels":{"firebase":"enabled"},"createTime":"2022-12-05T09:20:59.163Z"}
+[info] 
+[info] === Serving from 'C:\Users\purea\Documents\practice\portfolio'...
+[info] 
+[debug] [2025-05-30T01:29:33.842Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.842Z] Checked if tokens are valid: true, expires at: 1748571177520
+[debug] [2025-05-30T01:29:33.842Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/dynamicbineurowebsite/sites 

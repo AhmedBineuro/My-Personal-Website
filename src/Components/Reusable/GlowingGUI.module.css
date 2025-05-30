@@ -1,0 +1,67 @@
+@import '../../Palette.css';
+.ToggleButton input, .ToggleButtonOn input{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -0.2em;
+    left:0;
+    cursor:pointer;
+}
+
+.ToggleButton,.ToggleButtonOn{
+    position:relative;
+    border:none;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8em;
+    transition: all 0.7s;
+}
+.ToggleButton{
+    
+    outline: 0.1em solid transparent;
+    border-radius: 0.3rem;
+    background-color: var(--buttonOff-color);
+    z-index: 0;
+}
+
+.ToggleButton:hover{
+    
+    background-color: var(--buttonHover-color);
+}
+
+.ToggleButtonOn{
+    position:relative;
+    border:none;
+    outline: 0.1em solid var(--buttonOnOutline-color);
+    border-radius: 0.3rem;
+    background-color: var(--buttonOn-color);
+    box-shadow: 0 0 1em 10px var(--buttonShadow-color);
+    z-index: 10;
+}
+
+
+
+
+
+.RadioButtonList{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    vertical-align: middle;
+}
+.RadioButtonList .ToggleButton,.RadioButtonList .ToggleButtonOn{
+
+    border-radius: 0;
+}
+
+.RadioButtonList .ToggleButton:first-child,.RadioButtonList .ToggleButtonOn:first-child{
+
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+.RadioButtonList .ToggleButton:last-child,.RadioButtonList .ToggleButtonOn:last-child{
+
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
