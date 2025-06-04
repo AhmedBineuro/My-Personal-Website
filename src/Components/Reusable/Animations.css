@@ -1,0 +1,51 @@
+@keyframes slideInUD {
+    0%{
+        position: relative;
+        top:-100%;
+    }
+    100%{
+        position: relative;
+        top:0%
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes FadeInDU {
+    0%{
+        opacity: 0;
+        transform: translate(0,20px);
+    }
+    100%{
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes FadeInLR {
+    0%{
+        opacity: 0;
+        transform: translate(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes FadeInUD {
+    0%{
+        opacity: 0;
+        transform: translate(0,-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: none;
+    }
+}

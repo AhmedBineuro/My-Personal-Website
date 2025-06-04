@@ -1,52 +1,50 @@
 .MiniNavContainer{
-    /* animation: shrink 0.7s ease-in-out reverse; */
     position:relative;
     display: flex;
-    width: fit-content;
-    height: fit-content;
+    max-height: 100%;
+    width: 20%;
     padding: 0.5em;
     border-radius: 0.5em;
-    justify-content: space-between;
+    justify-content:left;
     align-items: center;
-    transition: all 0.7s;
-    animation: grow 0.7s forwards;
+    width: fit-content;
+    transition: width 0.7s;
 }
 @keyframes shrink {
     0%{
-        width: 20%;
+        opacity:100;
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+    30%{
+        opacity: 40%;
     }
     100%{
-        width: 18%;
+        opacity:0;
+        transform-origin: left;
+        transform: scaleX(0);
+        display: none;
     }
 }
 @keyframes grow {
     0%{
-        width: 18%;
+        width: fit-content;
+        opacity: 0;
+        transform-origin: left;
+        transform: scaleX(0);
+    }
+    30%{
+        opacity: 40%;
     }
     100%{
-        width: 20%;
-    }
-}
-@keyframes fadeIn{
-    0%{
-        opacity: 0%;
-    }
-    100%{
+        transform-origin: left;
+        transform: scaleX(1);
         opacity: 100%;
-    }
-}
-
-@keyframes fadeOut{
-    0%{
-        opacity: 100%;
-    }
-    100%{
-        opacity: 0%;
     }
 }
 
 .Dock{
-    animation: shrink 0.7s forwards;
+    transition: all 0.7s;
 }
 
 .MiniNavTitle{
@@ -55,8 +53,9 @@
 
 
 .MiniNavContainer > div{
-    display: flex;
-    animation: fadeIn 0.7s ease-in-out forwards;
+    transition: all 0.7s;
+    animation: grow 0.7s forwards;
+    margin-left: 0.5em;
 }
 
 .MiniNavContainer>div>button{
@@ -75,7 +74,7 @@
     border-bottom-right-radius: 0.3rem;
 }
 .Dock >div{
-    animation: fadeOut 0.7s forwards;
+    animation: shrink 0.7s forwards;
     pointer-events: none;
 }
 

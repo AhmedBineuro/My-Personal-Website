@@ -18,6 +18,7 @@ export default function MiniNav({buttonList,isDocked}){
         initVal={val}
         />
         <RadioButtonList
+        className="RadioButtonList"
         buttonList={buttonList}
         id="ABTME"
         />

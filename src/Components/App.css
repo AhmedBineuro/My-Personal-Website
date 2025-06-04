@@ -1,23 +1,6 @@
 @import '../Palette.css';
-@keyframes slideInUD {
-    0%{
-        position: relative;
-        top:-100%;
-    }
-    100%{
-        position: relative;
-        top:0%
-    }
-}
+@import './Reusable/Animations.css';
 
-@keyframes fadeIn {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
 
 .App{
     display: flex;
@@ -26,13 +9,14 @@
     padding: 0.5em;
     height: 95vh;
     animation: fadeIn 0.9s ease-in-out forwards;
+    font-size: 150%;
 }
 .AppHeader{
     display: flex;
     height: fit-content;
     justify-content: space-between;
     margin:0;
-    animation: slideInUD 0.5s ease-in-out forwards;
+    animation: FadeInUD 0.7s ease-in-out forwards;
     padding: 0.5em;
 }
 
@@ -53,12 +37,15 @@
     display: flex;
     flex-direction: column;
     background-color: var(--primary-color);
+    color: var(--buttonOnOutline-color);
     flex: 1;
     padding: 0.5em;
     border-radius: 0.2em;
     backdrop-filter:blur(1rem);
+    /* overflow: scroll; */
 }
 footer{
+    padding:0.5em;
     background-color: var(--primary-color);
     margin: 0;
     margin-top: 0.2em;

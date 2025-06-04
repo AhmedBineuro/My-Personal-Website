@@ -1,0 +1,7 @@
+@import '../../../../Palette.css';
+@import '../../../Reusable/Animations.css';
+
+.FeedContent{
+    animation: FadeInDU 0.7s forwards;
+    width: 50%;
+}

@@ -9,3 +9,13 @@ body {
   background-color: var(--bg-color);
   font-family: NeonLand;
 }
+
+p{
+  font-family:Arial, Helvetica, sans-serif;
+}
+a{
+  color: var(--buttonHover-color);
+}
+a:visited{
+  color: var(--buttonOn-color);
+}

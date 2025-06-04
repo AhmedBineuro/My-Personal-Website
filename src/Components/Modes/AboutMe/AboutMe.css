@@ -1,0 +1,22 @@
+@import '../../../Palette.css';
+.FeedHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    min-width: fit-content;
+    max-width: 100%;
+    max-height: fit-content;
+    min-height: fit-content;
+    transition: all 0.7s ease-in-out;
+    margin: 0.5em;
+}
+.FeedName{
+    display: inline;
+    width: fit-content;
+    min-width: 12%;
+    height: fit-content;
+    margin: 0;
+    transition: all 0.7s;
+}

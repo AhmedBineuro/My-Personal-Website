@@ -11,9 +11,11 @@
 
 .ToggleButton,.ToggleButtonOn{
     font-family: NeonLand;
+    font-weight:lighter;
+    font-size: large;
     position:relative;
     border:none;
-    width: fit-content;
+    min-width: fit-content;
     height: fit-content;
     padding: 0.8em;
     transition: all 0.7s;
