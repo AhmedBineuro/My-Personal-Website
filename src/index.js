@@ -5,5 +5,5 @@ import App from './Components/App.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <App initMode={0}/>
 );

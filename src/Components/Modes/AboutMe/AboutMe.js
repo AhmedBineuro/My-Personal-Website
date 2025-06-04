@@ -24,14 +24,14 @@ import MiniNav from "./MiniNav.js";
 
 
 
-export function AboutMe(){
-    const [mode,setMode]=useState(0);
+export function AboutMe({initFeed}){
+    const [feed,setFeed]=useState((initFeed===undefined)?0:initFeed);
     const buttonList=[
         {
           text:"Bio",
           initVal:"true",
           clickFunc:(()=>{
-            setMode(0);
+            setFeed(0);
             return;
           })
         },
@@ -39,7 +39,7 @@ export function AboutMe(){
           text:"Skills",
           initVal:"false",
           clickFunc:(()=>{
-            setMode(1);
+            setFeed(1);
             return;
           })
         },
@@ -47,13 +47,14 @@ export function AboutMe(){
           text:"Contact me",
           initVal:"false",
           clickFunc:(()=>{
-            setMode(2);
+            setFeed(2);
             return;
           })
         }
       ];
-      const renderMode=()=>{
-        switch(mode){
+      const renderFeed=()=>{
+        console.log("Changing About me feed");
+        switch(feed){
           case 0:
             return <Bio/>
           case 1:
@@ -64,5 +65,5 @@ export function AboutMe(){
             break;
         }
       };
-    return <><MiniNav buttonList={buttonList}></MiniNav>{renderMode()}</>;
+    return <div><MiniNav buttonList={buttonList} isDocked={"false"}></MiniNav>{renderFeed()}</div>;
 }

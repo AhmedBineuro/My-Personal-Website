@@ -5,8 +5,8 @@ import {AboutMe} from './Modes/AboutMe/AboutMe.js';
 import {Projects} from './Modes/Projects/Projects.js';
 import {Released} from './Modes/Released/Released.js';
 
-function App() {
-  const [mode,setMode]=useState(0);
+function App({initMode}) {
+  const [mode,setMode]=useState((initMode===undefined)?0:initMode);
   const buttonList=[
     {
       text:"About me",
@@ -42,7 +42,7 @@ function App() {
       case 2:
         return <Released/>
       default:
-        break;
+        return <></>
     }
   };
 
@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <header className="AppHeader slideInUD">
         <h1 id="HeaderTitle" className="HeaderTitle">Ahmed Abdalla</h1>
-        <RadioButtonList className='ToggleButtonRadio' 
+        <RadioButtonList 
         buttonList={buttonList}
         />
       </header>

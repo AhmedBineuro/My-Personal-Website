@@ -51,7 +51,7 @@
 
 .FeedContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: var(--primary-color);
     flex: 1;
     padding: 0.5em;

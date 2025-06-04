@@ -11,9 +11,7 @@ export function ToggleButton(props){
     
     const toggleState = ()=>{
         const newState = !state;
-        setState(newState); // actually toggle internal state
-        
-        if(!newState && props.clickFunc!==undefined)
+        if(newState && props.clickFunc!==undefined)
             props.clickFunc();
         if(props.onUpdate!==undefined)
             props.onUpdate(props.index,!state);
@@ -40,6 +38,7 @@ export function RadioButtonList(props){
             if (i === index) {
                 return { ...button, initVal: newState }; // Set the clicked button as selected
             }
+
             return { ...button, initVal: "false" }; // Unselect all other buttons
         });
         setButtonList(updatedList);

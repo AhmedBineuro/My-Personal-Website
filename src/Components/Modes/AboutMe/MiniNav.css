@@ -1,5 +1,6 @@
 .MiniNavContainer{
     /* animation: shrink 0.7s ease-in-out reverse; */
+    position:relative;
     display: flex;
     width: fit-content;
     height: fit-content;
@@ -47,6 +48,7 @@
 .Dock{
     animation: shrink 0.7s forwards;
 }
+
 .MiniNavTitle{
     margin: 0;
 }
@@ -60,10 +62,7 @@
 .MiniNavContainer>div>button{
     border-radius: 0;
     font-size: 70%;
-    transition: all;
-}
-.MiniNavContainer>button:has(input:checked){
-    
+    transition: all 0.7s;
 }
 
 .MiniNavContainer>div>button:first-child{
@@ -74,4 +73,16 @@
 .MiniNavContainer>div>button:last-child{
     border-top-right-radius: 0.3rem;
     border-bottom-right-radius: 0.3rem;
+}
+.Dock >div{
+    animation: fadeOut 0.7s forwards;
+    pointer-events: none;
+}
+
+.Dock >button{
+    opacity: 30%;
+}
+
+.Dock >button:hover{
+    opacity: 100%;
 }
