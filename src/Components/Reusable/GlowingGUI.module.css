@@ -10,6 +10,7 @@
 }
 
 .ToggleButton,.ToggleButtonOn{
+    font-family: NeonLand;
     position:relative;
     border:none;
     width: fit-content;
@@ -18,7 +19,6 @@
     transition: all 0.7s;
 }
 .ToggleButton{
-    
     outline: 0.1em solid transparent;
     border-radius: 0.3rem;
     background-color: var(--buttonOff-color);
@@ -37,6 +37,7 @@
     border-radius: 0.3rem;
     background-color: var(--buttonOn-color);
     box-shadow: 0 0 1em 10px var(--buttonShadow-color);
+    color: white;
     z-index: 10;
 }
 
@@ -49,19 +50,4 @@
     width: fit-content;
     height: fit-content;
     vertical-align: middle;
-}
-.RadioButtonList .ToggleButton,.RadioButtonList .ToggleButtonOn{
-
-    border-radius: 0;
-}
-
-.RadioButtonList .ToggleButton:first-child,.RadioButtonList .ToggleButtonOn:first-child{
-
-    border-top-left-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
-}
-.RadioButtonList .ToggleButton:last-child,.RadioButtonList .ToggleButtonOn:last-child{
-
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
 }

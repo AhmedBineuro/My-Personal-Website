@@ -7,4 +7,10 @@
     --buttonOn-color: rgb(210, 168, 255);
     --buttonOnOutline-color: rgb(255, 255, 255);
     --buttonShadow-color:rgba(219, 180, 255, 0.549);
+
+    --miniNavBg-color: rgba(74, 23, 122, 0.342);
+}
+@font-face {
+    font-family: NeonLand;
+    src: url(./Font/Neonland.ttf);
 }

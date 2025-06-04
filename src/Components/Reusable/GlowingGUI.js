@@ -10,9 +10,13 @@ export function ToggleButton(props){
     const [state,setState]=useState(props.initVal==="false"?false:true);
     
     const toggleState = ()=>{
-        if(!state)
+        const newState = !state;
+        setState(newState); // actually toggle internal state
+        
+        if(!newState && props.clickFunc!==undefined)
             props.clickFunc();
-        props.onUpdate(props.index,!state);
+        if(props.onUpdate!==undefined)
+            props.onUpdate(props.index,!state);
     };
 
     useEffect(()=>{
@@ -21,7 +25,7 @@ export function ToggleButton(props){
 
     var styl=state?styles.ToggleButtonOn:styles.ToggleButton;
     return(
-        <button className={styl} onClick={toggleState}>
+        <button id={props.id} className={styl} onClick={toggleState}>
             {props.text}
             <input type="checkbox"></input>
         </button>
@@ -38,7 +42,6 @@ export function RadioButtonList(props){
             }
             return { ...button, initVal: "false" }; // Unselect all other buttons
         });
-        console.log("What");
         setButtonList(updatedList);
     };
     useEffect(()=>{if(buttonList.length>=0)
@@ -46,7 +49,7 @@ export function RadioButtonList(props){
     const buttons = buttonList.map((button, index) =><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/>);
     
     return(
-    <div className={styles.RadioButtonList}>
+    <div id={props.id} className={styles.RadioButtonList}>
         {buttons}
     </div>);
 }

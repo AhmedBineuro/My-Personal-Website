@@ -1,4 +1,5 @@
 import { RadioButtonList } from "../../Reusable/GlowingGUI.js";
+import MiniNav from "../AboutMe/MiniNav.js";
 /**
  * Should have the following features
  *  - Should display a set of projects from a database
