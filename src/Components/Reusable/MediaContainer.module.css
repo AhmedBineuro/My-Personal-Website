@@ -1,0 +1,83 @@
+@import './Animations.css';
+
+/*Until I figure out why the import doesn't work*/
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.MediaContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+    border-radius: 0.5em;
+    padding:0.5em;
+    opacity: 100%;
+
+    background-color: var(--pane-color);
+    border:none;
+    backdrop-filter: blur(0.5px);
+    
+    
+    transition: opacity 0.2s;
+    animation: fadeIn 0.7s ease-in-out;
+}
+.MediaContainer:hover{
+    opacity: 70%;
+}
+.MediaName{
+    font-size: 120%;
+    position: absolute;
+    left:0.8em;
+    top:9.2em;
+    background-color: var(--buttonOff-color);
+    color:white;
+    backdrop-filter: blur(1.5px);
+    padding: 0.2em;
+    border-radius: 0.2em;
+    transition: opacity 0.2s;
+
+}
+.MediaImage{
+    max-width: 25em;
+}
+.TagList{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.Tag{
+    padding: 0.5em;
+    margin-right: 0.2em;
+    margin-top: 0.2em;
+    background-color: grey;
+    flex-basis: 1;
+    width: 25%;
+    text-overflow: none;
+    color:white;
+    font-weight: bolder;
+}
+.DownloadButton{
+    position: absolute;
+    top:1em;
+    right:1em;
+    width: 2.5em;
+    height: 2.5em;
+    content: "D";
+    z-index: 2;
+}
+.MediaContainerWrapper{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}

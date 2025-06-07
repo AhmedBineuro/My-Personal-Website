@@ -3,6 +3,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getFirestore,collection,query,getDoc,getDocs, doc,DocumentReference ,where} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 import MiniNav from "../AboutMe/MiniNav.js";
+import MediaContainer from "../../Reusable/MediaContainer.js";
+import "./Projects.css"
+import { useEffect, useState } from "react";
 /**
  * Should have the following features
  *  - Should display a set of projects from a database
@@ -43,35 +46,65 @@ const db=getFirestore(app);
         }
 */
 
-async function getProjects() {
-    //How to read a collection
-    var projects=[];
-    var tags={};
-    const q=query(collection(db,"Projects"));
-    const qSnapshot=await getDocs(q);
-    qSnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        let Tags= [];
-        doc.data().Tags.forEach((tag,key)=>{Tags.push(key)});
-        projects.push({
-            id: doc.id,
-            Name: doc.data().Name,
-            Tags:Tags
-        });
-    });
-    const q2=query(collection(db,"Tags"));
-    const q2Snapshot=await getDocs(q2);
-    q2Snapshot.forEach((doc)=>{
-        tags[doc.id]=doc.data().Name;
-    });
-    return( 
-    {
-        Projects:projects,
-        Tags:tags
-    });
-}
+//How to read a collection
+var projects=[];
+var tags={};
+// return( 
+// {
+//     Projects:projects,
+//     Tags:tags
+// });
 
 export function Projects(){
+    const [p,setProjects]=useState((projects===undefined)?projects:[]);
+    const [t,setTags]=useState((projects===undefined)?projects:{});
+
+    
     //Use useEffect to handle async operations
-    return <><h1>Projects</h1></>;
+    // useEffect(()=>{
+    //     setProjects(projects);
+    //     setTags(tags)
+    // },[projects,tags]);
+
+    const getProjects= async ()=>{
+        projects=[];
+        tags={};
+        const q=query(collection(db,"Projects"));
+        const qSnapshot=await getDocs(q);
+        qSnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            projects.push({
+                id: doc.id,
+                Name: doc.data().Name,
+                Tags:doc.data().Tags,
+                Thumbnail:doc.data().Thumbnail,
+                URL:doc.data().URL,
+                DURL:doc.data().DURL
+            });
+        });
+        const q2=query(collection(db,"Tags"));
+        const q2Snapshot=await getDocs(q2);
+        q2Snapshot.forEach((doc)=>{
+            tags[doc.id]=doc.data().Name;
+        });
+        return { projects, tags };
+    };
+    useEffect(()=>{
+        getProjects().then(({ projects, tags })=>{
+            console.log(projects);
+            console.log(tags);
+            setProjects(projects);
+            setTags(tags);
+        });
+    },[]);
+    
+    
+    const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
+    return (
+    <><h1>Projects</h1>
+        <div className="ProjectList">
+            {(p.length!=0)?(projectList):<h2>Whoops Nothing to see</h2>}
+        </div>
+        </>
+    );
 }

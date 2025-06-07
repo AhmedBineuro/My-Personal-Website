@@ -55,7 +55,6 @@ export function AboutMe({initFeed}){
         }
       ];
       const renderFeed=()=>{
-        console.log("Changing About me feed");
         switch(feed){
           case 0:
             return <Bio/>
@@ -68,7 +67,6 @@ export function AboutMe({initFeed}){
         }
       };
       const nameFeed=()=>{
-        console.log("Changing About me feed");
         switch(feed){
           case 0:
             return "Bio";
