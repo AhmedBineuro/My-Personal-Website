@@ -25,7 +25,6 @@ export function ToggleButton(props){
     return(
         <button id={props.id} className={styl} onClick={toggleState}>
             {props.text}
-            <input type="checkbox"></input>
         </button>
     );
 }

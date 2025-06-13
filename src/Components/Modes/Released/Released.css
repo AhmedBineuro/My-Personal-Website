@@ -1,5 +1,9 @@
 .PageTitle{
     margin: 0;
+    font-family:Neonland;
+}
+.TempHeader{
+    font-family:Neonland;
 }
 .ReleasedList{
     margin: 0;
