@@ -1,3 +1,7 @@
+.PageHeader{
+    display: inline-flex;
+    width: 100%;
+}
 .PageTitle{
     display: inline;
     margin: 0.2em;
@@ -7,38 +11,57 @@
     flex-direction: row;
     max-width: 100%;
     flex-wrap: wrap;
+    vertical-align: middle;
 }
-/* .ProjectFilter{
-    height: 10%;
-    vertical-align:middle;
-    padding: 0.2em;
+.ProjectFilter{
+    display: inline-flex;
+    width: 70%;
+    height: 100%;
+    vertical-align: middle;
+    align-items: center;
+    /* padding: 0.2em;
     margin-top: 0.2em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.2em; */
 }
 .SearchBar{
+    height: 40%;
+    width: 70%;
     margin: 0;
-    height: 70%;
-    width: 30%;
     margin-left: 0.2em;
     margin-right: 0.2em;
-    background-color: var(--searchOff-color);
+    background-color: var(--textInputOff-color);
     border: none;
     border-radius: 0.2em;
+    font-weight: bold;
     transition: all 0.7s;
+}
+.SearchBar:hover{
+    background-color: var(--textInputHover-color);
 }
 
 .SearchBar:focus{
     outline: none;
-    background-color: var(--searchOn-color);
-    box-shadow: 0 0 1em 10px var(--searchShadow-color);
-    font-weight: bold;
-    color: var(--primary-color);
+    background-color: var(--textInputOn-color);
+    box-shadow: 0 0 1em 10px var(--textInputShadow-color);
+    color: white;
 }
 .SearchButton{
     margin: 0;
-    height: 70%;
+    height: 40%;
     margin-left: 0.2em;
     margin-right: 0.2em;
     padding-right: 1em;
     padding-left: 1em;
-} */
+    outline: none;
+    border: none;
+    border-radius: 0.2em;
+    font-weight:bold ;
+    background-color: var(--buttonOff-color);
+    color: violet;
+    transition: all 0.7s ease-in-out;
+}
+.SearchButton:hover{
+    background-color: var(--buttonOn-color);
+    box-shadow: 0 0 1em 10px var(--buttonShadow-color);
+    color:white;
+}

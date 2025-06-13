@@ -48,15 +48,16 @@
 .FeedContainer{
     display: flex;
     flex-direction: column;
+    height: fit-content;
     background-color: var(--primary-color);
     color: var(--buttonOnOutline-color);
-    flex: 1;
+    flex: 3;
     padding: 0.5em;
     border-radius: 0.2em;
     backdrop-filter:blur(1rem);
-    /* overflow: scroll; */
 }
 footer{
+    flex: 0;
     padding:0.5em;
     background-color: var(--primary-color);
     margin: 0;

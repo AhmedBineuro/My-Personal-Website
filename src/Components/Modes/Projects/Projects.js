@@ -1,8 +1,6 @@
-import { RadioButtonList } from "../../Reusable/GlowingGUI.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getFirestore,collection,query,getDoc,getDocs, doc,DocumentReference ,where} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { getFirestore,collection,query,getDocs,} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-import MiniNav from "../AboutMe/MiniNav.js";
 import MediaContainer from "../../Reusable/MediaContainer.js";
 import "./Projects.css"
 import { useEffect, useState } from "react";
@@ -54,43 +52,73 @@ var tags={};
 //     Projects:projects,
 //     Tags:tags
 // });
+//Will find the substring in the fullstring with the least amount of characters (minimum length= substring.length)
+export function matchScore(match, whole) {
+    let words = match.toLowerCase().split(' ');
+    let possibleSubstrings = [];
+  for (let j = 0; j < words.length; j++) {
+        let cumulativeSubstring = words[j];
+        if (cumulativeSubstring !== "") {
+            possibleSubstrings.push(cumulativeSubstring);
+            for (let i = j+1; i < words.length; i++) {
+                if(i===j || words[i]==="")continue;
+                cumulativeSubstring += " " + words[i];
+                possibleSubstrings.push(cumulativeSubstring);
+            }
+        }
+    }
+    possibleSubstrings.sort((a, b) => b.length-a.length);
+    let score = 0;
+    let smallCaseWhole=whole.toLowerCase();
+    for(let i=0;i<possibleSubstrings.length;i++){
+        if (smallCaseWhole.includes(possibleSubstrings[i])) {
+            score += smallCaseWhole.length*(possibleSubstrings[i].length/smallCaseWhole.length);
+        }
+    }
+    return score;
+}
 
 export function Projects(){
     const [p,setProjects]=useState((projects===undefined)?projects:[]);
     const [t,setTags]=useState((projects===undefined)?projects:{});
 
-    
-    //Use useEffect to handle async operations
-    // useEffect(()=>{
-    //     setProjects(projects);
-    //     setTags(tags)
-    // },[projects,tags]);
-
-    const getProjects= async ()=>{
+    const FetchProjects= async ()=>{
+        console.log("Clicked");
         projects=[];
-        tags={};
-        const q=query(collection(db,"Projects"));
-        const qSnapshot=await getDocs(q);
-        qSnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            projects.push({
-                id: doc.id,
-                Name: doc.data().Name,
-                Tags:doc.data().Tags,
-                Thumbnail:doc.data().Thumbnail,
-                URL:doc.data().URL,
-                DURL:doc.data().DURL
+            tags={};
+            const q=query(collection(db,"Tags"));
+            const qSnapshot=await getDocs(q);
+            qSnapshot.forEach((doc)=>{
+                tags[doc.id]=doc.data().Name;
             });
-        });
-        const q2=query(collection(db,"Tags"));
-        const q2Snapshot=await getDocs(q2);
-        q2Snapshot.forEach((doc)=>{
-            tags[doc.id]=doc.data().Name;
-        });
-        return { projects, tags };
-    };
+            const q2=query(collection(db,"Projects"));
+            const q2Snapshot=await getDocs(q2);
+            q2Snapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                projects.push({
+                    id: doc.id,
+                    Name: doc.data().Name,
+                    Tags:doc.data().Tags,
+                    Thumbnail:doc.data().Thumbnail,
+                    URL:doc.data().URL,
+                    DURL:doc.data().DURL
+                });
+            });
+            if(document.getElementById("SearchBar")!==undefined){
+                let searchText=document.getElementById("SearchBar").value;
+                if(searchText.trim()!==""){
+                    projects.sort((a,b)=>matchScore(searchText.trim(),b.Name)-matchScore(searchText.trim(),a.Name));
+                    
+                    //Rearrange later to prevent computing the score twice
+                    projects=projects.filter(project=>(matchScore(searchText.trim(),project.Name)>0));
+            }
+            setProjects(projects);
+            setTags(tags);
+            return {projects, tags };
+            };
+        };
     useEffect(()=>{
-        getProjects().then(({ projects, tags })=>{
+        FetchProjects().then(({ projects, tags })=>{
             console.log(projects);
             console.log(tags);
             setProjects(projects);
@@ -102,13 +130,15 @@ export function Projects(){
     const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
     return (
     <>
-        <h1 className="PageTitle">Projects</h1>
-        {/* <div className="ProjectFilter">
-            <input className="SearchBar" type="text"></input>
-            <button className="SearchButton">Search</button>
-        </div> */}
+        <div className="PageHeader">
+            <h1 className="PageTitle">Projects</h1>
+            <div className="ProjectFilter">
+                <input id="SearchBar" onKeyUp={(e)=>{if(e.key==="Enter")FetchProjects()}} className="SearchBar" type="text"></input>
+                <button className="SearchButton" onClick={FetchProjects}>Search</button>
+            </div>
+        </div>
         <div className="ProjectList">
-            {(p.length!=0)?(projectList):<h2>Whoops nothing to see here!</h2>}
+            {(p.length!==0)?(projectList):<h2>Whoops nothing to see here!</h2>}
         </div>
         </>
     );
