@@ -49,7 +49,7 @@ function App({initMode}) {
   return (
     <div className="App">
       <header className="AppHeader slideInUD">
-        <h1 id="HeaderTitle" className="HeaderTitle">Ahmed Abdalla</h1>
+        <h1 id="HeaderTitle" className="HeaderTitle">Dynamic Bineuro</h1>
         <RadioButtonList 
         buttonList={buttonList}
         />
