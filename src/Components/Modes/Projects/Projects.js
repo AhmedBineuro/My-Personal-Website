@@ -150,7 +150,7 @@ export function Projects(){
             </div>
         </div>
         <div className="ProjectList">
-            {(p.length!==0)?(projectList):<h2>Whoops nothing to see here!</h2>}
+            {(p.length!==0)?(projectList):<h2 className="TempHeader">Whoops nothing to see here!</h2>}
         </div>
         </>
     );

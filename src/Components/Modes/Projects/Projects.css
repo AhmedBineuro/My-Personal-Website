@@ -65,3 +65,6 @@
     box-shadow: 0 0 1em 10px var(--buttonShadow-color);
     color:white;
 }
+.TempHeader{
+    font-family:Arial, Helvetica, sans-serif;
+}
