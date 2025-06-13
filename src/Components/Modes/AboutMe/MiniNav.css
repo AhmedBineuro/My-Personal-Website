@@ -3,21 +3,33 @@
     display: flex;
     max-height: 100%;
     width: 20%;
-    padding: 0.5em;
+    padding: 0.2em;
     border-radius: 0.5em;
     justify-content:left;
     align-items: center;
     width: fit-content;
     transition: width 0.7s;
 }
-@container (min-width:200px){
+@media only screen and (min-width:410px){
     .MiniNavContainer{
         flex-direction: row;
     }
+    .MiniNavContainer>div{
+        margin-left: 0.5em;
+    }
 }
-@container (max-width:190px){
+@media only screen and (max-width:400px){
     .MiniNavContainer{
-        flex-direction: column;
+        display: block;
+        padding: 0.2em;
+        justify-content: left;
+    }
+    .MiniNavContainer>div>button{
+        margin-top: 0.2em;
+    }
+    .MiniNavContainer>div{
+        margin-top: 0.2em;
+        margin-left: 0;
     }
 }
 @keyframes shrink {
@@ -65,7 +77,6 @@
 .MiniNavContainer > div{
     transition: all 0.7s;
     animation: grow 0.7s forwards;
-    margin-left: 0.5em;
 }
 
 .MiniNavContainer>div>button{
