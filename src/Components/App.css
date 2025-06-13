@@ -2,6 +2,19 @@
 @import './Reusable/Animations.css';
 
 
+@media only screen and (max-width:400px) {
+    .AppHeader{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media only screen and (min-width:900px) {
+    .AppHeader{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 .App{
     display: flex;
     flex-direction: column;
@@ -12,7 +25,6 @@
     font-size: 150%;
 }
 .AppHeader{
-    display: flex;
     height: fit-content;
     justify-content: space-between;
     margin:0;

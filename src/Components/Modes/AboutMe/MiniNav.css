@@ -10,6 +10,16 @@
     width: fit-content;
     transition: width 0.7s;
 }
+@container (min-width:200px){
+    .MiniNavContainer{
+        flex-direction: row;
+    }
+}
+@container (max-width:190px){
+    .MiniNavContainer{
+        flex-direction: column;
+    }
+}
 @keyframes shrink {
     0%{
         opacity:100;
