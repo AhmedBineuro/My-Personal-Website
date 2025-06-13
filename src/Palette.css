@@ -1,12 +1,17 @@
 :root{
     --bg-color: #21152c;
-    --primary-color:rgba(83, 71, 94,0.7);
+    --primary-color:rgba(94, 71, 88, 0.7);
+    --secondary-color:rgb(182, 119, 165);
     
     --buttonOff-color:rgb(74, 23, 122);
     --buttonHover-color:rgb(153, 58, 255);
     --buttonOn-color: rgb(210, 168, 255);
     --buttonOnOutline-color: rgb(255, 255, 255);
     --buttonShadow-color:rgba(219, 180, 255, 0.549);
+
+    --textInputOff-color:rgb(158, 105, 215);
+    --textInputOn-color: rgb(217, 181, 255);
+    --textInputShadow-color:rgba(207, 190, 224, 0.637);
 
     --pane-color:rgba(218, 178, 255, 0.384);
 

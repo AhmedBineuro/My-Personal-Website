@@ -34,10 +34,11 @@
     opacity: 70%;
 }
 .MediaName{
+    font-family:Arial, Helvetica, sans-serif;
     font-size: 120%;
     position: absolute;
     left:0.8em;
-    top:9.2em;
+    top:9.6em;
     background-color: var(--buttonOff-color);
     color:white;
     backdrop-filter: blur(1.5px);
@@ -66,6 +67,9 @@
     text-overflow: none;
     color:white;
     font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .DownloadButton{
     position: absolute;

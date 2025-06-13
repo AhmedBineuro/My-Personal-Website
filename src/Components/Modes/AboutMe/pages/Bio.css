@@ -1,7 +1,14 @@
 @import '../../../../Palette.css';
 @import '../../../Reusable/Animations.css';
 
+@media screen and (min-width:800px) {
+    .FeedContent{
+        width: 70%;
+        max-width: 800px;
+    }
+}
+
 .FeedContent{
     animation: FadeInDU 0.7s forwards;
-    width: 50%;
+   
 }

@@ -10,7 +10,7 @@
     max-height: fit-content;
     min-height: fit-content;
     transition: all 0.7s ease-in-out;
-    margin: 0.5em;
+    margin: 0.2em;
 }
 .FeedName{
     display: inline;

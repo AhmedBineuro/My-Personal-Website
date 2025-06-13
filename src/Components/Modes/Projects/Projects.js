@@ -101,9 +101,14 @@ export function Projects(){
     
     const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
     return (
-    <><h1>Projects</h1>
+    <>
+        <h1 className="PageTitle">Projects</h1>
+        {/* <div className="ProjectFilter">
+            <input className="SearchBar" type="text"></input>
+            <button className="SearchButton">Search</button>
+        </div> */}
         <div className="ProjectList">
-            {(p.length!=0)?(projectList):<h2>Whoops Nothing to see</h2>}
+            {(p.length!=0)?(projectList):<h2>Whoops nothing to see here!</h2>}
         </div>
         </>
     );

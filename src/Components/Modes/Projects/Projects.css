@@ -1,4 +1,44 @@
+.PageTitle{
+    display: inline;
+    margin: 0.2em;
+}
 .ProjectList{
     display: flex;
     flex-direction: row;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
+/* .ProjectFilter{
+    height: 10%;
+    vertical-align:middle;
+    padding: 0.2em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+.SearchBar{
+    margin: 0;
+    height: 70%;
+    width: 30%;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    background-color: var(--searchOff-color);
+    border: none;
+    border-radius: 0.2em;
+    transition: all 0.7s;
+}
+
+.SearchBar:focus{
+    outline: none;
+    background-color: var(--searchOn-color);
+    box-shadow: 0 0 1em 10px var(--searchShadow-color);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.SearchButton{
+    margin: 0;
+    height: 70%;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    padding-right: 1em;
+    padding-left: 1em;
+} */

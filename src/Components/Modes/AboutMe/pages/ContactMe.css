@@ -1,0 +1,80 @@
+@import '../../../../Palette.css';
+@import '../../../Reusable/Animations.css';
+@media screen and (min-width:800px) {
+    #ContactForm{
+        width: 70%;
+        max-width: 800px;
+    }
+}
+#ContactForm{
+    max-width: 50%;
+    animation: FadeInDU 0.7s forwards;
+}
+#ContactForm>{
+    margin:0.5em;
+}
+.FormTitle{
+    font-family:Arial, Helvetica, sans-serif;
+}
+em{
+    display: block;
+    font-size: normal;
+    font-weight: bolder;
+}
+.FormTextInput{
+    border: 1px solid transparent;
+    font-weight: bold;
+    outline: none;
+    margin: 0.2em;
+    border-radius: 0.2em;
+    height: 2em;
+    background-color: var(--textInputOff-color);
+    transition:all 0.7s;
+}
+.FormTextInput:focus{
+    border: 1px solid white;
+    color: white;
+    background-color: var(--textInputOn-color);
+    box-shadow: 0 0 1em 10px var(--textInputShadow-color);
+}
+.FormTextArea{
+    border: 1px solid transparent;
+    outline: none;
+    font-weight: bold;
+    margin: 0.2em;
+    border-radius: 0.2em;
+    height: 2em;
+    background-color: var(--textInputOff-color);
+    transition:all 0.7s ease-in-out;
+}
+.FormTextArea:focus{
+    border: 1px solid white;
+    color: white;
+    background-color: var(--textInputOn-color);
+    box-shadow: 0 0 1em 10px var(--textInputShadow-color);
+}
+.SocialsList{
+    display: flex;
+    flex-direction: row;
+}
+.SocialsButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 5em;
+    height: 6em;
+    background-color: transparent;
+    border:none;
+    transition: all 0.7s ease-in-out;
+}
+.SocialsButtonIcon{
+    width:100%;
+    transition: all 0.7s ease-in-out;
+}
+.SocialsButton:hover{
+    /* background-color: rgba(0, 0, 0, 0.253); */
+    /* filter: invert(100%); */
+    filter: invert(100%);
+}
+.SocialsButtonIcon:hover{
+}

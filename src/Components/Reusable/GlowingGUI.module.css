@@ -12,7 +12,7 @@
 .ToggleButton,.ToggleButtonOn{
     font-family: NeonLand;
     font-weight:lighter;
-    font-size: large;
+    font-size: 80%;
     position:relative;
     border:none;
     min-width: fit-content;
@@ -52,4 +52,5 @@
     width: fit-content;
     height: fit-content;
     vertical-align: middle;
+    flex-wrap: nowrap;
 }
