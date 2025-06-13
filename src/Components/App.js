@@ -58,7 +58,7 @@ function App({initMode}) {
         {renderMode()}
       </main>
       <footer>
-        This is the footer
+        I haven't figured out what to put here
       </footer>
     </div>
   );
