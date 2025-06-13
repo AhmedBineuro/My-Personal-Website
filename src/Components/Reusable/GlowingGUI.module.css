@@ -18,6 +18,7 @@
     min-width: fit-content;
     height: fit-content;
     padding: 0.8em;
+    color: violet;
     transition: all 0.7s;
 }
 .ToggleButton{
