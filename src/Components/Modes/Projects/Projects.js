@@ -107,10 +107,22 @@ export function Projects(){
             if(document.getElementById("SearchBar")!==undefined){
                 let searchText=document.getElementById("SearchBar").value;
                 if(searchText.trim()!==""){
-                    projects.sort((a,b)=>matchScore(searchText.trim(),b.Name)-matchScore(searchText.trim(),a.Name));
+                    let projectScorePair=[];
+                    projects.forEach((project)=>{
+                        let searchScore=matchScore(searchText.trim(),project.Name);
+                        let tagScore=0;
+                        for(let i=0;i<project.Tags.length;i++){
+                            tagScore+=matchScore(searchText.trim(),tags[project.Tags[i]]);
+                        }
+                        projectScorePair.push({project:project,score:(tagScore+searchScore)});
+                    });
+                    projectScorePair.sort((a,b)=>(b.score-a.score));
+                    projectScorePair=projectScorePair.filter(pair=>(pair.score>0));
+                    console.log(projectScorePair);
+                    projects=[];
+                    projectScorePair.forEach((pair)=>projects.push(pair.project));
                     
                     //Rearrange later to prevent computing the score twice
-                    projects=projects.filter(project=>(matchScore(searchText.trim(),project.Name)>0));
             }
             setProjects(projects);
             setTags(tags);
