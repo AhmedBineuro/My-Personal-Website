@@ -74,7 +74,7 @@ export function Released(){
     const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} DURL={(project.DURL==="DNA"?undefined:project.DURL)} Thumbnail={project.Thumbnail} />);
     return <><h1 className="PageTitle">Releases</h1>
         <div className="ReleasedList">
-            {(projectList.length>0)?projectList:<h1>Releases coming soon!</h1>}
+            {(projectList.length>0)?projectList:<h1 className="TempHeader">Releases coming soon!</h1>}
         </div>
     </>;
 }
