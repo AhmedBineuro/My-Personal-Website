@@ -8,19 +8,19 @@ export default function ContactMe(){
             <p>You can also find me on these following platforms</p>
             <div className="SocialsList">
                 <button className="SocialsButton" onClick={((e)=>window.open("https://www.youtube.com/@dynamicbineuro6083",`_blank`))}>
-                    <img src={require("./icons/youtube.png")} className="SocialsButtonIcon"/>
+                    <img alt="Youtube button" src={require("./icons/youtube.png")} className="SocialsButtonIcon"/>
                     <em>Youtube</em>
                 </button>
                 <button className="SocialsButton" onClick={((e)=>window.open("https://www.linkedin.com/in/ahmed-abdalla-b9644a248/",`_blank`))}>
-                    <img src={require("./icons/linkedin.png")} className="SocialsButtonIcon"/>
+                    <img alt="LinkedIn button" src={require("./icons/linkedin.png")} className="SocialsButtonIcon"/>
                     <em>LinkedIn</em>
                 </button>
                 <button className="SocialsButton" onClick={((e)=>window.open("https://github.com/AhmedBineuro",`_blank`))}>
-                    <img src={require("./icons/github.png")} className="SocialsButtonIcon"/>
+                    <img alt="Github button" src={require("./icons/github.png")} className="SocialsButtonIcon"/>
                     <em>Github</em>
                 </button>
                 <button className="SocialsButton" onClick={((e)=>window.open("https://dynamicbineuro.itch.io/",`_blank`))}>
-                    <img src={require("./icons/itchio.png")} className="SocialsButtonIcon"/>
+                    <img alt="Itch.io button" src={require("./icons/itchio.png")} className="SocialsButtonIcon"/>
                     <em>Itch.io</em>
                 </button>
             </div>

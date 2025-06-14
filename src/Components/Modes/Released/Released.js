@@ -1,6 +1,5 @@
-import { RadioButtonList } from "../../Reusable/GlowingGUI.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getFirestore,collection,query,getDoc,getDocs, doc,DocumentReference ,where} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { getFirestore,collection,query,getDocs} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 import  "./Released.css";
 import MediaContainer from "../../Reusable/MediaContainer.js";

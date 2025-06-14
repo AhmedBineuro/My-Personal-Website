@@ -1,6 +1,6 @@
 import { RadioButtonList, ToggleButton } from "../../Reusable/GlowingGUI"
 import './MiniNav.css'
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 
 export default function MiniNav({buttonList,isDocked}){
     const [docked,setDocked]=useState(isDocked==="true"?true:false);
