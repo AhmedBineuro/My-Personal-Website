@@ -9,6 +9,7 @@
 .ProjectList{
     display: flex;
     flex-direction: row;
+    justify-content: left;
     max-width: 100%;
     flex-wrap: wrap;
     vertical-align: middle;
