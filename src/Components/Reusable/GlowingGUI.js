@@ -42,8 +42,8 @@ export function RadioButtonList(props){
         });
         setButtonList(updatedList);
     };
-    useEffect(()=>{if(buttonList.length>=0)
-        updateList(0,"true")},[buttonList.length]);
+    // eslint-disable-next-line
+    useEffect(()=>{if(buttonList.length>=0)updateList(0,"true")},[buttonList.length]); 
     const buttons = buttonList.map((button, index) =><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/>);
     
     return(
