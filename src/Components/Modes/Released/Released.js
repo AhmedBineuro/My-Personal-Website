@@ -64,8 +64,6 @@ export function Released(){
     };
     useEffect(()=>{
         getProjects().then(({ projects, tags })=>{
-            console.log(projects);
-            console.log(tags);
             setProjects(projects);
             setTags(tags);
         });

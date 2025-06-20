@@ -83,7 +83,6 @@ export function Projects(){
     const [t,setTags]=useState((projects===undefined)?projects:{});
 
     const FetchProjects= async ()=>{
-        console.log("Clicked");
         projects=[];
             tags={};
             const q=query(collection(db,"Tags"));
@@ -118,7 +117,6 @@ export function Projects(){
                     });
                     projectScorePair.sort((a,b)=>(b.score-a.score));
                     projectScorePair=projectScorePair.filter(pair=>(pair.score>0));
-                    console.log(projectScorePair);
                     projects=[];
                     projectScorePair.forEach((pair)=>projects.push(pair.project));
                     
@@ -131,8 +129,6 @@ export function Projects(){
         };
     useEffect(()=>{
         FetchProjects().then(({ projects, tags })=>{
-            console.log(projects);
-            console.log(tags);
             setProjects(projects);
             setTags(tags);
         });

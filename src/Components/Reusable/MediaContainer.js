@@ -14,8 +14,6 @@ function interpolate(color1, color2, t){
     ];
 }
 export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
-    // console.log(Name);
-    // console.log(Tags);
     let colors=[];
     for(let i=1;i<=Tags.length;i++){
         let t=i/Tags.length;
