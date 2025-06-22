@@ -1,3 +1,16 @@
+@import '../../../../Palette.css';
 .TempHeader{
     font-family:Arial, Helvetica, sans-serif;
+}
+
+@media screen and (min-width:800px) {
+    .SkillList{
+        width: 70%;
+        max-width: 800px;
+    }
+}
+.SkillList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

@@ -4,7 +4,6 @@ import {RadioButtonList}  from './Reusable/GlowingGUI.js';
 import {AboutMe} from './Modes/AboutMe/AboutMe.js';
 import {Projects} from './Modes/Projects/Projects.js';
 import {Released} from './Modes/Released/Released.js';
-
 function App({initMode}) {
   const [mode,setMode]=useState((initMode===undefined)?0:initMode);
   const buttonList=[
@@ -33,6 +32,9 @@ function App({initMode}) {
       })
     }
   ];
+  const resetMode=()=>{
+    setMode(0);
+  };
   const renderMode=()=>{
     switch(mode){
       case 0:
@@ -45,11 +47,10 @@ function App({initMode}) {
         return <></>
     }
   };
-
   return (
-    <div className="App">
+    <div  className="App">
       <header className="AppHeader slideInUD">
-        <h1 id="HeaderTitle" className="HeaderTitle">Dynamic Bineuro</h1>
+        <h1 id="HeaderTitle" onClick={resetMode}className="HeaderTitle">Dynamic Bineuro</h1>
         <RadioButtonList 
         buttonList={buttonList}
         />
@@ -57,9 +58,8 @@ function App({initMode}) {
       <main className="FeedContainer">
         {renderMode()}
       </main>
-      <footer>
-        I haven't figured out what to put here
-      </footer>
+      {/* <footer>
+      </footer> */}
     </div>
   );
 }

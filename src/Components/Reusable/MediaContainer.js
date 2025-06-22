@@ -1,4 +1,4 @@
-import {Tag} from './Tag';
+import {Tag} from './Tag.js';
 import styles from './MediaContainer.module.css';
 // const startingColor=[255,92,204];
 // const endingColor=[81,40,137];

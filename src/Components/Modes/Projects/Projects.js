@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getFirestore,collection,query,getDocs,} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
 import MediaContainer from "../../Reusable/MediaContainer.js";
 import "./Projects.css"
 import { useEffect, useState } from "react";
@@ -79,8 +78,8 @@ export function matchScore(match, whole) {
 }
 
 export function Projects(){
-    const [p,setProjects]=useState((projects===undefined)?projects:[]);
-    const [t,setTags]=useState((projects===undefined)?projects:{});
+    const [p,setProjects]=useState((projects!==undefined)?projects:[]);
+    const [t,setTags]=useState((tags!==undefined)?tags:{});
 
     const FetchProjects= async ()=>{
         projects=[];
@@ -103,7 +102,7 @@ export function Projects(){
                     DURL:doc.data().DURL
                 });
             });
-            if(document.getElementById("SearchBar")!==undefined){
+            if(document.getElementById("SearchBar")!==undefined&&document.getElementById("SearchBar")!==null){
                 let searchText=document.getElementById("SearchBar").value;
                 if(searchText.trim()!==""){
                     let projectScorePair=[];
@@ -128,10 +127,7 @@ export function Projects(){
             };
         };
     useEffect(()=>{
-        FetchProjects().then(({ projects, tags })=>{
-            setProjects(projects);
-            setTags(tags);
-        });
+        FetchProjects();
     },[]);
     
     
