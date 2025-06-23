@@ -13,7 +13,7 @@
     max-width: 100%;
     flex-wrap: wrap;
     vertical-align: middle;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 .ProjectFilter{
     display: inline-flex;
