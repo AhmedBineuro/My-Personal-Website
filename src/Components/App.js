@@ -32,9 +32,6 @@ function App({initMode}) {
       })
     }
   ];
-  const resetMode=()=>{
-    setMode(0);
-  };
   const renderMode=()=>{
     switch(mode){
       case 0:
@@ -50,7 +47,7 @@ function App({initMode}) {
   return (
     <div  className="App">
       <header className="AppHeader slideInUD">
-        <h1 id="HeaderTitle" onClick={resetMode}className="HeaderTitle">Dynamic Bineuro</h1>
+        <h1 id="HeaderTitle"className="HeaderTitle">Dynamic Bineuro</h1>
         <RadioButtonList 
         buttonList={buttonList}
         />
