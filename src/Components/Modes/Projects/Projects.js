@@ -144,7 +144,7 @@ export function Projects(){
         <div className="PageHeader">
             <h1 className="PageTitle">Projects</h1>
             <div className="ProjectFilter">
-                <input id="SearchBar" placeholder="Search for a project" onChange={FilterProjects} onKeyUp={(e)=>{if(e.key==="Enter")FilterProjects()}} className="SearchBar" type="text"></input>
+                <input id="SearchBar" placeholder="Search" onChange={FilterProjects} onKeyUp={(e)=>{if(e.key==="Enter")FilterProjects()}} className="SearchBar" type="text"></input>
                 <button className="RefreshButton" onClick={FetchProjects}>Refresh</button>
             </div>
         </div>
