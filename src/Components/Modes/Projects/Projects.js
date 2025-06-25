@@ -81,51 +81,6 @@ export function Projects(){
     const [p,setProjects]=useState((projects!==undefined)?projects:[]);
     const [t,setTags]=useState((tags!==undefined)?tags:{});
 
-    const FetchProjects= async ()=>{
-        projects=[];
-            tags={};
-            const q=query(collection(db,"Tags"));
-            const qSnapshot=await getDocs(q);
-            qSnapshot.forEach((doc)=>{
-                tags[doc.id]=doc.data().Name;
-            });
-            const q2=query(collection(db,"Projects"));
-            const q2Snapshot=await getDocs(q2);
-            q2Snapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                projects.push({
-                    id: doc.id,
-                    Name: doc.data().Name,
-                    Tags:doc.data().Tags,
-                    Thumbnail:doc.data().Thumbnail,
-                    URL:doc.data().URL,
-                    DURL:doc.data().DURL
-                });
-            });
-            if(document.getElementById("SearchBar")!==undefined&&document.getElementById("SearchBar")!==null){
-                let searchText=document.getElementById("SearchBar").value;
-                if(searchText.trim()!==""){
-                    let projectScorePair=[];
-                    projects.forEach((project)=>{
-                        let searchScore=matchScore(searchText.trim(),project.Name);
-                        let tagScore=0;
-                        for(let i=0;i<project.Tags.length;i++){
-                            tagScore+=matchScore(searchText.trim(),tags[project.Tags[i]]);
-                        }
-                        projectScorePair.push({project:project,score:(tagScore+searchScore)});
-                    });
-                    projectScorePair.sort((a,b)=>(b.score-a.score));
-                    projectScorePair=projectScorePair.filter(pair=>(pair.score>0));
-                    projects=[];
-                    projectScorePair.forEach((pair)=>projects.push(pair.project));
-                    
-                    //Rearrange later to prevent computing the score twice
-            }
-            setProjects(projects);
-            setTags(tags);
-            return {projects, tags };
-            };
-        };
     const FilterProjects=()=>{
         let filtered=projects;
         if(document.getElementById("SearchBar")!==undefined&&document.getElementById("SearchBar")!==null){
@@ -148,16 +103,44 @@ export function Projects(){
                     //Rearrange later to prevent computing the score twice
             }
             setProjects(filtered);
+            return true;
             };
+        return false;
     };
-    useEffect(()=>{
-        FetchProjects();
-    },[]);
-    
-    
-    const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
-    return (
-    <>
+    const FetchProjects= async ()=>{
+        projects=[];
+            tags={};
+            const q=query(collection(db,"Tags"));
+            const qSnapshot=await getDocs(q);
+            qSnapshot.forEach((doc)=>{
+                tags[doc.id]=doc.data().Name;
+            });
+            const q2=query(collection(db,"Projects"));
+            const q2Snapshot=await getDocs(q2);
+            q2Snapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                projects.push({
+                    id: doc.id,
+                    Name: doc.data().Name,
+                    Tags:doc.data().Tags,
+                    Thumbnail:doc.data().Thumbnail,
+                    URL:doc.data().URL,
+                    DURL:doc.data().DURL
+                });
+            });
+            if(!FilterProjects())
+                setProjects(projects);
+            setTags(tags);
+            return {p, tags };
+            };
+            useEffect(()=>{
+                FetchProjects();
+            },[]);
+            
+            
+            const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
+            return (
+                <>
         <div className="PageHeader">
             <h1 className="PageTitle">Projects</h1>
             <div className="ProjectFilter">
@@ -170,4 +153,4 @@ export function Projects(){
         </div>
         </>
     );
-}
+};
