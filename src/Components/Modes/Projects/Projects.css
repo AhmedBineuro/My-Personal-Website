@@ -47,7 +47,7 @@
     box-shadow: 0 0 1em 10px var(--textInputShadow-color);
     color: white;
 }
-.SearchButton{
+.RefreshButton{
     margin: 0;
     height: 40%;
     margin-left: 0.2em;
@@ -62,10 +62,14 @@
     color: violet;
     transition: all 0.7s ease-in-out;
 }
-.SearchButton:hover{
+.RefreshButton:hover{
     background-color: var(--buttonOn-color);
     box-shadow: 0 0 1em 10px var(--buttonShadow-color);
     color:white;
+}
+::placeholder{
+    color: black;
+    opacity: 60%;
 }
 .TempHeader{
     font-family:Arial, Helvetica, sans-serif;

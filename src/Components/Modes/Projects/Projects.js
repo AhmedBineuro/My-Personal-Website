@@ -126,6 +126,30 @@ export function Projects(){
             return {projects, tags };
             };
         };
+    const FilterProjects=()=>{
+        let filtered=projects;
+        if(document.getElementById("SearchBar")!==undefined&&document.getElementById("SearchBar")!==null){
+                let searchText=document.getElementById("SearchBar").value;
+                if(searchText.trim()!==""){
+                    let projectScorePair=[];
+                    filtered.forEach((project)=>{
+                        let searchScore=matchScore(searchText.trim(),project.Name);
+                        let tagScore=0;
+                        for(let i=0;i<project.Tags.length;i++){
+                            tagScore+=matchScore(searchText.trim(),tags[project.Tags[i]]);
+                        }
+                        projectScorePair.push({project:project,score:(tagScore+searchScore)});
+                    });
+                    projectScorePair.sort((a,b)=>(b.score-a.score));
+                    projectScorePair=projectScorePair.filter(pair=>(pair.score>0));
+                    filtered=[];
+                    projectScorePair.forEach((pair)=>filtered.push(pair.project));
+                    
+                    //Rearrange later to prevent computing the score twice
+            }
+            setProjects(filtered);
+            };
+    };
     useEffect(()=>{
         FetchProjects();
     },[]);
@@ -137,8 +161,8 @@ export function Projects(){
         <div className="PageHeader">
             <h1 className="PageTitle">Projects</h1>
             <div className="ProjectFilter">
-                <input id="SearchBar" onKeyUp={(e)=>{if(e.key==="Enter")FetchProjects()}} className="SearchBar" type="text"></input>
-                <button className="SearchButton" onClick={FetchProjects}>Search</button>
+                <input id="SearchBar" placeholder="Search for a project" onChange={FilterProjects} onKeyUp={(e)=>{if(e.key==="Enter")FilterProjects()}} className="SearchBar" type="text"></input>
+                <button className="RefreshButton" onClick={FetchProjects}>Refresh</button>
             </div>
         </div>
         <div className="ProjectList">
