@@ -46,6 +46,7 @@ const db=getFirestore(app);
 //How to read a collection
 var projects=[];
 var tags={};
+var fetching=false;
 // return( 
 // {
 //     Projects:projects,
@@ -108,6 +109,8 @@ export function Projects(){
         return false;
     };
     const FetchProjects= async ()=>{
+        if(fetching) return {p,t};
+        fetching=true;
         projects=[];
             tags={};
             const q=query(collection(db,"Tags"));
@@ -134,7 +137,9 @@ export function Projects(){
             return {p, tags };
             };
             useEffect(()=>{
-                FetchProjects();
+                FetchProjects().then(()=>{
+                    fetching=false;
+                });
             },[]);
             
             
