@@ -17,20 +17,14 @@
     margin: 0.5em;
 }
 .MediaContainer{
-    margin: 0.5em;
     border-radius: 0.5em;
     padding:0.5em;
-    opacity: 100%;
     max-width: 370px;
     background-color: var(--pane-color);
     border:none;
     backdrop-filter: blur(0.5px);
-    
-    transition: opacity 0.2s;
-    animation: fadeIn 0.7s ease-in-out;
 }
 .MediaContainer:hover{
-    opacity: 70%;
     cursor: pointer;
 }
 .MediaName{
@@ -45,7 +39,6 @@
     padding: 0.2em;
     border-radius: 0.2em;
     transition: opacity 0.2s;
-
 }
 .MediaImage{
     width: 100%;
@@ -90,4 +83,14 @@
     position: relative;
     width: fit-content;
     height: fit-content;
+    transform: scale(100%,100%);
+    animation: fadeIn 0.7s ease-in-out;
+    transition: all 0.2s;
+}
+
+.MediaContainerWrapper:hover{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    transform: scale(110%,110%);
 }

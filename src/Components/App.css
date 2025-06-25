@@ -44,7 +44,6 @@
     color:var(--buttonOn-color);
     text-shadow: 0 0 1em var(--buttonOn-color);
 }
-
 .FeedContainer{
     display: flex;
     flex-direction: column;
