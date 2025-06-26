@@ -17,12 +17,6 @@ function interpolate(color1, color2, t){
 }
 export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
     let colors=[];
-    const  [t,setTransform]=useState({
-        xAngle:0,
-        yAngle:0,
-        position:{x:0,y:0},
-        bounds:undefined
-    });
     for(let i=1;i<=Tags.length;i++){
         let t=i/Tags.length;
         colors.push(interpolate(startingColor,endingColor,t));
