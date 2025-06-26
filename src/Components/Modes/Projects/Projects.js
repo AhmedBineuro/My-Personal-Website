@@ -140,7 +140,7 @@ export function Projects(){
                 FetchProjects().then(()=>{
                     fetching=false;
                 });
-            },[]);
+            },[FetchProjects]);
             
             
             const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
