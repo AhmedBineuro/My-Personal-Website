@@ -1,0 +1,11 @@
+.CardObject{
+    perspective: 800px;
+    max-width: fit-content;
+    max-height: fit-content;
+    margin:0.5em;
+    transition: all 0.2s;
+}
+.CardSheen{
+    position:absolute;
+    inset: 0;
+}
