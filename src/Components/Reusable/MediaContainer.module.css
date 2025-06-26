@@ -83,6 +83,7 @@
     position: relative;
     width: fit-content;
     height: fit-content;
+    margin: 0.5em;
     transform: scale(100%,100%);
     animation: fadeIn 0.7s ease-in-out;
     transition: all 0.2s;
