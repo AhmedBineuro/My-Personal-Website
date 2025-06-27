@@ -1,6 +1,5 @@
 import {Tag} from './Tag.js';
 import styles from './MediaContainer.module.css';
-import "./Card.css";
 // const startingColor=[255,92,204];
 // const endingColor=[81,40,137];
 // const startingColor=[98, 49, 176];

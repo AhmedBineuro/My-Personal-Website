@@ -20,10 +20,6 @@
     z-index: 0;
 }
 
-.ToggleButton:hover{
-    
-    background-color: var(--buttonHover-color);
-}
 
 .ToggleButtonOn{
     position:relative;
@@ -34,10 +30,18 @@
     box-shadow: 0 0 1em 10px var(--buttonShadow-color);
     color: white;
     z-index: 10;
+    transition: all 0.7s;
 }
 
 
 
+.ToggleButton:hover,.ToggleButton:focus{
+    
+    background-color: var(--buttonHover-color);
+}
+.ToggleButtonOn:focus{
+    box-shadow: none;
+}
 
 
 .RadioButtonList{

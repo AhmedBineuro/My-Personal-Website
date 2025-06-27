@@ -62,7 +62,7 @@
     color: violet;
     transition: all 0.7s ease-in-out;
 }
-.RefreshButton:hover{
+.RefreshButton:hover,.RefreshButton:focus{
     background-color: var(--buttonOn-color);
     box-shadow: 0 0 1em 10px var(--buttonShadow-color);
     color:white;

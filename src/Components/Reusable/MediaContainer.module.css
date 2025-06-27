@@ -17,15 +17,20 @@
     margin: 0.5em;
 }
 .MediaContainer{
+    outline: none;
     border-radius: 0.5em;
     padding:0.5em;
     max-width: 370px;
     background-color: var(--pane-color);
     border:none;
     backdrop-filter: blur(0.5px);
+    transition: all 0.7s;
 }
 .MediaContainer:hover{
     cursor: pointer;
+}
+.MediaContainer:focus{
+    box-shadow: 0em 0em 2em 1em rgba(255, 167, 251, 0.822);
 }
 .MediaName{
     font-family:Arial, Helvetica, sans-serif;
@@ -87,9 +92,10 @@
     transform: scale(100%,100%);
     animation: fadeIn 0.7s ease-in-out;
     transition: all 0.2s;
+    border: none;
 }
 
-.MediaContainerWrapper:hover{
+.MediaContainerWrapper:hover,.MediaContainerWrapper:focus{
     position: relative;
     width: fit-content;
     height: fit-content;
