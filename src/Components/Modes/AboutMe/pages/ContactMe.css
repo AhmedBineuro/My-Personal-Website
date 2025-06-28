@@ -33,7 +33,7 @@ em{
 }
 .FormTextInput:focus{
     border: 1px solid white;
-    color: white;
+    color: light-dark(white,grey);
     background-color: var(--textInputOn-color);
     box-shadow: 0 0 1em 10px var(--textInputShadow-color);
 }

@@ -11,5 +11,3 @@ The website is currently hosted [here](https://dynamicbineuro.com)!
 ## What is being worked on right now
 
 - The skills page
-- Update styling for accessibility
-  - Light Mode

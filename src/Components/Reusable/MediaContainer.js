@@ -4,8 +4,7 @@ import styles from './MediaContainer.module.css';
 // const endingColor=[81,40,137];
 // const startingColor=[98, 49, 176];
 // const endingColor=[176, 49, 125];
-const startingColor=[174, 100, 26];
-const endingColor=[302, 100, 26];
+
 function interpolate(color1, color2, t){
     return[
         Math.round(color1[0]*(1-t)+color2[0]*t),
@@ -15,6 +14,33 @@ function interpolate(color1, color2, t){
 }
 export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
     let colors=[];
+
+    //Fetch tag colors
+    let root=getComputedStyle(document.documentElement);
+    let tagStart=root.getPropertyValue("--tagStart-color");
+    let tagEnd=root.getPropertyValue("--tagEnd-color");
+    const matchedStart=tagStart.match(/hsl\(\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*\)/g);
+    const matchedEnd=tagEnd.match(/hsl\(\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*\)/g);
+    const parsedStart=[];
+    const parsedEnd=[];
+    
+    matchedStart.forEach((m)=>{parsedStart.push(m.match(/[0-9]{1,3}/g))});
+    matchedEnd.forEach((m)=>{parsedEnd.push(m.match(/[0-9]{1,3}/g))});
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+    let startingColor=[];
+    let endingColor=[];
+    if(isLightMode)
+    {
+        parsedStart[0].forEach((p)=>{startingColor.push(parseInt(p))});
+        parsedEnd[0].forEach((p)=>{endingColor.push(parseInt(p))});
+    }
+    else
+    {
+        parsedStart[1].forEach((p)=>{startingColor.push(parseInt(p))});
+        parsedEnd[1].forEach((p)=>{endingColor.push(parseInt(p))});
+    }
+    //End of tag color fetch
+    
     for(let i=1;i<=Tags.length;i++){
         let t=i/Tags.length;
         colors.push(interpolate(startingColor,endingColor,t));

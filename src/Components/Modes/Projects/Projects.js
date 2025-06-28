@@ -54,6 +54,7 @@ var fetching=false;
 // });
 //Will find the substring in the fullstring with the least amount of characters (minimum length= substring.length)
 export function matchScore(match, whole) {
+    if(match===undefined || whole === undefined) return 0;
     let words = match.toLowerCase().split(' ');
     let possibleSubstrings = [];
   for (let j = 0; j < words.length; j++) {

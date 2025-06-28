@@ -49,7 +49,7 @@
     flex-direction: column;
     height: fit-content;
     background-color: var(--primary-color);
-    color: var(--buttonOnOutline-color);
+    color: light-dark(var(--text-color),var(--buttonOnOutline-color));
     flex: 3;
     padding: 0.5em;
     border-radius: 0.2em;

@@ -30,7 +30,7 @@
     cursor: pointer;
 }
 .MediaContainer:focus{
-    box-shadow: 0em 0em 2em 1em rgba(255, 167, 251, 0.822);
+    box-shadow:  0em 0em 2em 1em var(--containerFocus-color);
 }
 .MediaName{
     font-family:Arial, Helvetica, sans-serif;
@@ -70,7 +70,7 @@
     margin-top: 0.2em;
     background-color: grey;
     text-overflow: none;
-    color:white;
+    color:light-dark(black,white);
     max-width:100%;
     font-weight: bolder;
     border-radius: 0.2em;

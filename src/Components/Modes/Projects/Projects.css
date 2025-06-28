@@ -35,6 +35,7 @@
     border: none;
     border-radius: 0.2em;
     font-weight: bold;
+    color: light-dark(white,black);
     transition: all 0.7s;
 }
 .SearchBar:hover{
@@ -45,7 +46,7 @@
     outline: none;
     background-color: var(--textInputOn-color);
     box-shadow: 0 0 1em 10px var(--textInputShadow-color);
-    color: white;
+    color: light-dark(black,white);
 }
 .RefreshButton{
     margin: 0;
@@ -59,7 +60,7 @@
     border-radius: 0.2em;
     font-weight:bold ;
     background-color: var(--buttonOff-color);
-    color: violet;
+    color: var(--text-color);
     transition: all 0.7s ease-in-out;
 }
 .RefreshButton:hover,.RefreshButton:focus{

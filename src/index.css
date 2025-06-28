@@ -16,8 +16,8 @@ p{
   line-height: 1.3em;
 }
 a{
-  color: var(--buttonHover-color);
+  color: light-dark(var(--buttonOn-color),var(--buttonHover-color));
 }
 a:visited{
-  color: var(--buttonOn-color);
+  color: light-dark(var(--textInputOff-color),var(--buttonOn-color));
 }

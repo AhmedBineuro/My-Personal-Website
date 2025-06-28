@@ -1,22 +1,28 @@
 :root{
-    --bg-color: #21152c;
-    --primary-color:rgba(94, 71, 88, 0.7);
-    --secondary-color:rgb(182, 119, 165);
+    color-scheme: light dark;
+    --bg-color: light-dark(#ece9e6,#21152c);
+    --primary-color: light-dark(rgba(170, 125, 89, 0.7),rgba(94, 71, 88, 0.7));
+    --secondary-color: light-dark(rgb(223, 108, 14),rgb(182, 119, 165));
     
-    --buttonOff-color:rgb(74, 23, 122);
-    --buttonHover-color:rgb(153, 58, 255);
-    --buttonOn-color: rgb(210, 168, 255);
-    --buttonOnOutline-color: rgb(255, 255, 255);
-    --buttonShadow-color:rgba(219, 180, 255, 0.549);
+    --buttonOff-color:light-dark(rgb(122, 84, 37),rgb(74, 23, 122));
+    --buttonHover-color:light-dark(rgb(206, 141, 62),rgb(153, 58, 255));
+    --buttonOn-color: light-dark(rgb(255, 156, 26),rgb(210, 168, 255));
+    --buttonOnOutline-color: light-dark(rgba(0, 0, 0, 0.308),rgb(255, 255, 255));
+    --buttonShadow-color:light-dark(rgba(0, 0, 0, 0.549),rgba(219, 180, 255, 0.549));
 
-    --textInputOff-color:rgb(158, 105, 215);
-    --textInputHover-color:rgb(175, 135, 218);
-    --textInputOn-color: rgb(217, 181, 255);
-    --textInputShadow-color:rgba(207, 190, 224, 0.637);
+    --textInputOff-color:light-dark(rgb(153, 88, 13),rgb(158, 105, 215));
+    --textInputHover-color:light-dark(rgb(184, 109, 24),rgb(175, 135, 218));
+    --textInputOn-color: light-dark(rgb(240, 204, 166),rgb(217, 181, 255));
+    --textInputShadow-color:light-dark(rgba(180, 166, 150, 0.637),rgba(207, 190, 224, 0.637));
 
-    --pane-color:rgba(218, 178, 255, 0.384);
+    --pane-color:light-dark(rgba(255, 241, 224, 0.397),rgba(218, 178, 255, 0.384));
+    --text-color:light-dark(#FAF9F6,violet);
 
     --miniNavBg-color: rgba(74, 23, 122, 0.342);
+    --containerFocus-color: light-dark(rgba(0, 0, 0, 0.562),rgba(255, 167, 251, 0.822));
+
+    --tagStart-color: light-dark(hsl(276, 43, 73),hsl(174, 100, 26));
+    --tagEnd-color: light-dark(hsl(96, 43, 73),hsl(302, 100, 26));
 }
 @font-face {
     font-family: NeonLand;
