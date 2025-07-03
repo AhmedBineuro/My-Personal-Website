@@ -29,9 +29,18 @@
 .MediaContainer:hover{
     cursor: pointer;
 }
-.MediaContainer:focus{
+@media (prefers-color-scheme: dark) {
+
+    .MediaContainer:focus{
     box-shadow:  0em 0em 2em 1em var(--containerFocus-color);
 }
+}
+@media (prefers-color-scheme: light) {
+    .MediaContainer:focus{
+    box-shadow:  0em 0em 2em 1em inset var(--containerFocus-color);
+    }
+}
+
 .MediaName{
     font-family:Arial, Helvetica, sans-serif;
     font-size: 120%;

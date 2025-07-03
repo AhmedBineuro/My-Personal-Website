@@ -39,8 +39,9 @@
     
     background-color: var(--buttonHover-color);
 }
-.ToggleButtonOn:focus{
-    box-shadow: none;
+
+.ToggleButton:focus, .ToggleButtonOn:focus{
+    outline: 0.4em double var(--secondary-color);
 }
 
 
