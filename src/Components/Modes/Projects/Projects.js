@@ -47,6 +47,15 @@ const db=getFirestore(app);
 var projects=[];
 var tags={};
 var fetching=false;
+function Projectcompare( a, b ) {
+  if ( a.Name < b.Name ){
+    return -1;
+  }
+  if ( a.Name > b.Name ){
+    return 1;
+  }
+  return 0;
+}
 // return( 
 // {
 //     Projects:projects,
@@ -87,6 +96,8 @@ export function Projects(){
         let filtered=projects;
         if(document.getElementById("SearchBar")!==undefined&&document.getElementById("SearchBar")!==null){
                 let searchText=document.getElementById("SearchBar").value;
+                if(searchText==="")
+                    return false;
                 if(searchText.trim()!==""){
                     let projectScorePair=[];
                     filtered.forEach((project)=>{
@@ -133,30 +144,34 @@ export function Projects(){
                 });
             });
             if(!FilterProjects())
+            {
+                projects.sort(Projectcompare);
+                console.log(projects);
                 setProjects(projects);
+            }
             setTags(tags);
             return {p, tags };
-            };
-            useEffect(()=>{
-                FetchProjects().then(()=>{
-                    fetching=false;
-                });
+    };
+        useEffect(()=>{
+            FetchProjects().then(()=>{
+                fetching=false;
             });
-            
-            
-            const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
-            return (
-                <>
-        <div className="PageHeader">
-            <h1 className="PageTitle">Projects</h1>
-            <div className="ProjectFilter">
-                <input id="SearchBar" placeholder="Search" onChange={FilterProjects} onKeyUp={(e)=>{if(e.key==="Enter")FilterProjects()}} className="SearchBar" type="text"></input>
-                <button className="RefreshButton" onClick={FetchProjects}>Refresh</button>
-            </div>
+        });
+        
+        
+        const projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(t[tag]!==undefined)?t[tag]:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
+        return (
+            <>
+    <div className="PageHeader">
+        <h1 className="PageTitle">Projects</h1>
+        <div className="ProjectFilter">
+            <input id="SearchBar" placeholder="Search" onChange={FilterProjects} onKeyUp={(e)=>{if(e.key==="Enter")FilterProjects()}} className="SearchBar" type="text"></input>
+            <button className="RefreshButton" onClick={FetchProjects}>Refresh</button>
         </div>
-        <div className="ProjectList">
-            {(p.length!==0)?(projectList):<h2 className="TempHeader">Whoops nothing to see here!</h2>}
-        </div>
-        </>
+    </div>
+    <div className="ProjectList">
+        {(p.length!==0)?(projectList):<h2 className="TempHeader">Whoops nothing to see here!</h2>}
+    </div>
+    </>
     );
 };
