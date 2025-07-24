@@ -82,7 +82,7 @@ export function AboutMe({initFeed}){
       <h1 className="FeedName">{nameFeed()}</h1>
       <MiniNav buttonList={buttonList} isDocked={"false"}/>
     </div>
-    <div>{renderFeed()}</div>
+    {renderFeed()}
     </>
   );
 }

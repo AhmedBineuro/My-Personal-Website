@@ -4,15 +4,72 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-@media screen and (min-width:800px) {
-    .SkillList{
-        width: 70%;
-        max-width: 800px;
-    }
+.SkillsPageWrapper{
+    display:flex;
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 85vh;
 }
+
 .SkillList{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
+    overflow: scroll;
+    scrollbar-gutter:stable both-edges;
+    padding: 0.5em;
+    background-color: var(--bg-color);
+    border-radius: 0.2em;
+    height: 100%;
+    max-width: 800px;
+    flex-direction: column;
     animation: FadeInDU 0.7s forwards;
+}
+.SkillFeed{
+    display: grid;
+    max-height: 100%;
+    max-width: 100%;
+    gap:0.5em;
+    grid-template-rows: none;
+    grid-template-columns: 2fr 8fr;
+}
+.SkillList>button{
+    align-items: center;
+    margin-right:0;
+}
+.ProjectsList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-color);
+    vertical-align: middle;
+    border-radius: 0.2em;
+    height: 100%;
+    max-height: 0.25fr;
+    margin: 0;
+}
+
+
+em{
+    margin-bottom: 0.5em;
+    font-size: 4vh;
+}
+@media only screen and (max-width:800px) {
+    .SkillFeed{
+        grid-template-columns: none;
+        grid-template-rows: 2fr 8fr;
+    }
+    .SkillList>button{
+        margin-top: 0;
+        margin-right: 0.2em;
+        font-size: 3vh;
+    }
+    .SkillList{
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+    }
+    .ProjectsList{
+        flex-direction: row;
+        width: 100%;
+    }
 }

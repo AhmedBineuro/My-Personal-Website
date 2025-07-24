@@ -17,8 +17,7 @@
     flex-wrap: nowrap;
     min-width: fit-content;
     max-width: 100%;
-    max-height: fit-content;
-    min-height: fit-content;
+    max-height: 100%;
     margin:0.2em;
     transition: all 0.7s ease-in-out;
 }

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getFirestore,collection,query,getDocs,} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { getFirestore,collection,query,where,getDocs,} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { useEffect, useState } from "react";
 import {Tag} from "../../../Reusable/Tag.js"
 import styles from '../../../Reusable/MediaContainer.js'
@@ -19,6 +19,9 @@ const firebaseConfig = {
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
 var skills = [];
+var projects=[];
+var fetching=false;
+
 function interpolate(color1, color2, t){
     return[
         Math.round(color1[0]*(1-t)+color2[0]*t),
@@ -27,10 +30,8 @@ function interpolate(color1, color2, t){
     ];
 }
 
-
-export default function Skills(){
-    const [s,setSkills]=useState(((skills!==undefined)?skills:[]));
-        //Fetch tag colors
+function getColors( startingColor,endingColor){
+    //Fetch tag colors from CSS files and parse it
     let root=getComputedStyle(document.documentElement);
     let tagStart=root.getPropertyValue("--tagStart-color");
     let tagEnd=root.getPropertyValue("--tagEnd-color");
@@ -38,55 +39,113 @@ export default function Skills(){
     const matchedEnd=tagEnd.match(/hsl\(\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*,\s*[0-9]{1,3}\s*\)/g);
     const parsedStart=[];
     const parsedEnd=[];
-    
     matchedStart.forEach((m)=>{parsedStart.push(m.match(/[0-9]{1,3}/g))});
     matchedEnd.forEach((m)=>{parsedEnd.push(m.match(/[0-9]{1,3}/g))});
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-    let startingColor=[];
-    let endingColor=[];
+    var start=[];
+    var end=[];
     if(isLightMode)
     {
-        parsedStart[0].forEach((p)=>{startingColor.push(parseInt(p))});
-        parsedEnd[0].forEach((p)=>{endingColor.push(parseInt(p))});
+        parsedStart[0].forEach((p)=>{start.push(parseInt(p))});
+        parsedEnd[0].forEach((p)=>{end.push(parseInt(p))});
     }
     else
     {
-        parsedStart[1].forEach((p)=>{startingColor.push(parseInt(p))});
-        parsedEnd[1].forEach((p)=>{endingColor.push(parseInt(p))});
+        parsedStart[1].forEach((p)=>{start.push(parseInt(p))});
+        parsedEnd[1].forEach((p)=>{end.push(parseInt(p))});
     }
-    //End of tag color fetch
+    return [start,end];
+}
+
+
+export default function Skills(){
+    const [s,setSkills]=useState(((skills!==undefined)?skills:[]));
+    const [p,setProjects]=useState(((projects!==undefined)?projects:[]));
+    let startingColor=[];
+    let endingColor=[];
+    [startingColor,endingColor]=getColors();
     const FetchSkills= async ()=>{
             skills=[];
             const q=query(collection(db,"Tags"));
             const qSnapshot=await getDocs(q);
             qSnapshot.forEach((doc)=>{
                 if(doc.data().IsSkill)
-                    skills.push(doc.data().Name);
+                    skills.push({
+                        ID: doc.id,
+                        Name: doc.data().Name,
+                    });
             });
             setSkills(skills);
-            console.log("Got skills");
             return skills;
+    };
+    const FetchProjects= async (id)=>{
+            projects=[];
+            var q;
+        if(id===undefined)
+            q=query(collection(db,"Projects"));
+        else
+            q=query(collection(db,"Projects"),where("Tags","array-contains",id));
+            const qSnapshot=await getDocs(q);
+            qSnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                projects.push({
+                    id: doc.id,
+                    Name: doc.data().Name,
+                    Tags:doc.data().Tags,
+                    Thumbnail:doc.data().Thumbnail,
+                    URL:doc.data().URL,
+                    DURL:doc.data().DURL
+                });
+            });
+            setProjects(projects);
+            console.log(projects);
+            fetching=false;
+            return projects;
     };
     useEffect(()=>{
             FetchSkills();
+            FetchProjects();
         },[]);
-        let colors=[];
-        for(let i=1;i<=skills.length;i++){
+        var ClickFunctions=[];
+        skills.forEach((skill)=>{
+            ClickFunctions.push(()=>{
+                if(!fetching)
+                {
+                    fetching=true;
+                    FetchProjects(skill.ID);
+                }
+            });
+        });
+        
+        var colors=[];
+        for(let i=0;i<=skills.length;i++){
             let t=i/skills.length;
             colors.push(interpolate(startingColor,endingColor,t));
         }
-        let skillList=[];
+        
+        var skillList=[];
             if(s!==undefined)
                 skillList=s.map((skill,index)=>(
-                <Tag Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} key={index} className={styles.Tag} Text={skill}/>
+                (colors.length>0)?(<Tag Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} 
+                key={index} 
+                className={styles.Tag} 
+                Text={skill.Name} 
+                Clickable={true} 
+                ClickFunction={ClickFunctions[index]}/>):<></>
             ));
     return(
-        <>
-        <div className="SkillList">
-            {
-                (skillList.length!==0)?skillList:<h2 className="TempHeader">Whoops nothing to see here!</h2>
-            }
+        <div className="SkillsPageWrapper">
+        <em>Select a skill to see relevant projects</em>
+        <div className="SkillFeed">
+            <div className="SkillList">
+                {
+                    (skillList.length!==0)?skillList:<h2 className="TempHeader">Whoops nothing to see here!</h2>
+                }
+            </div>
+            <div className="ProjectsList">
+                
+            </div>
         </div>
-        </>
+        </div>
     );
 }
