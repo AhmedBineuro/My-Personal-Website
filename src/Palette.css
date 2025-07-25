@@ -28,3 +28,6 @@
     font-family: NeonLand;
     src: url(./Font/Neonland.ttf);
 }
+*{
+    box-sizing: border-box;
+}
