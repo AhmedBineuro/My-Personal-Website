@@ -146,7 +146,6 @@ export function Projects(){
             if(!FilterProjects())
             {
                 projects.sort(Projectcompare);
-                console.log(projects);
                 setProjects(projects);
             }
             setTags(tags);

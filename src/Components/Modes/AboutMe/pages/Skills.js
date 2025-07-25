@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {Tag} from "../../../Reusable/Tag.js"
 import styles from '../../../Reusable/MediaContainer.js'
 import  "./Skills.css"
+import MediaContainer from "../../../Reusable/MediaContainer.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAzSjCbYwpY-N55FzhEOF6qqw_CuEdiZl0",
@@ -20,6 +21,7 @@ const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
 var skills = [];
 var projects=[];
+var tags={};
 var fetching=false;
 
 function interpolate(color1, color2, t){
@@ -69,11 +71,15 @@ export default function Skills(){
             const q=query(collection(db,"Tags"));
             const qSnapshot=await getDocs(q);
             qSnapshot.forEach((doc)=>{
-                if(doc.data().IsSkill)
-                    skills.push({
-                        ID: doc.id,
-                        Name: doc.data().Name,
-                    });
+                skills.push({
+                    ID: doc.id,
+                    Name: doc.data().Name,
+                    IsSkill:doc.data().IsSkill
+                });
+                tags[doc.id]={
+                    Name: doc.data().Name,
+                    IsSkill:doc.data().IsSkill
+                };
             });
             setSkills(skills);
             return skills;
@@ -126,13 +132,17 @@ export default function Skills(){
         var skillList=[];
             if(s!==undefined)
                 skillList=s.map((skill,index)=>(
-                (colors.length>0)?(<Tag Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} 
+                ((colors.length>0)&&skill.IsSkill)?(<Tag Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} 
                 key={index} 
                 className={styles.Tag} 
                 Text={skill.Name} 
                 Clickable={true} 
                 ClickFunction={ClickFunctions[index]}/>):<></>
             ));
+
+        var projectList=[];
+        if(p!==undefined)
+            projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(tags[tag]!==undefined)?tags[tag].Name:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
     return(
         <div className="SkillsPageWrapper">
         <em>Select a skill to see relevant projects</em>
@@ -143,7 +153,7 @@ export default function Skills(){
                 }
             </div>
             <div className="ProjectsList">
-                
+                {(projectList.length!==0)?projectList:<em className="Error">The relevant projects have not been added yet!</em>}
             </div>
         </div>
         </div>

@@ -43,10 +43,10 @@
 
 .MediaName{
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 120%;
+    font-size: 80%;
     position: absolute;
-    left:0.8em;
-    top:9.6em;
+    left:4%;
+    top:60%;
     background-color: var(--buttonOff-color);
     color:white;
     backdrop-filter: blur(1.5px);
@@ -80,6 +80,7 @@
     background-color: grey;
     color:light-dark(black,white);
     min-width: fit-content;
+    font-size: 80%;
     max-width:100%;
     font-weight: bolder;
     border-radius: 0.2em;
@@ -108,8 +109,8 @@ button.Tag:hover{
 }
 .MediaContainerWrapper{
     position: relative;
-    width: fit-content;
-    height: fit-content;
+    min-width: fit-content;
+    min-height: fit-content;
     margin: 0.5em;
     transform: scale(100%,100%);
     animation: fadeIn 0.7s ease-in-out;
