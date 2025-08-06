@@ -11,5 +11,6 @@ export default function MediaCarousel({Projects,Tags}){
         end=index+1;
     const displayProjects=Projects.subarray(start,end);
     
-    return (<></>)
+    return (<>
+    </>)
 }
