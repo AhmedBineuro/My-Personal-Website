@@ -1,6 +1,7 @@
-import { RadioButtonList, ToggleButton } from "../../Reusable/GlowingGUI"
+import { LinkedRadioButtonList, ToggleButton } from "../../Reusable/GlowingGUI"
 import './MiniNav.css'
 import {useState } from 'react';
+import {Link} from "react-router-dom"
 
 export default function MiniNav({buttonList,isDocked}){
     const [docked,setDocked]=useState(isDocked==="true"?true:false);
@@ -17,7 +18,7 @@ export default function MiniNav({buttonList,isDocked}){
         text="About Me"
         initVal={val}
         />
-        <RadioButtonList
+        <LinkedRadioButtonList
         className="RadioButtonList"
         buttonList={buttonList}
         id="ABTME"

@@ -1,5 +1,6 @@
 import styles from './GlowingGUI.module.css'
 import { useEffect, useState } from 'react';
+import {Routes, Route, Link} from "react-router-dom"
 
 /**
  * 
@@ -45,6 +46,28 @@ export function RadioButtonList(props){
     // eslint-disable-next-line
     useEffect(()=>{if(buttonList.length>=0)updateList(0,"true")},[buttonList.length]); 
     const buttons = buttonList.map((button, index) =><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/>);
+    
+    return(
+    <div id={props.id} className={styles.RadioButtonList}>
+        {buttons}
+    </div>);
+}
+
+export function LinkedRadioButtonList(props){
+    const [buttonList,setButtonList] = useState(props.buttonList);
+    const updateList=(index,newState)=>{
+        const updatedList = buttonList.map((button, i) => {
+            if (i === index) {
+                return { ...button, initVal: newState }; // Set the clicked button as selected
+            }
+
+            return { ...button, initVal: "false" }; // Unselect all other buttons
+        });
+        setButtonList(updatedList);
+    };
+    // eslint-disable-next-line
+    useEffect(()=>{if(buttonList.length>=0)updateList(0,"true")},[buttonList.length]); 
+    const buttons = buttonList.map((button, index) =><Link to={button.path}><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/></Link>);
     
     return(
     <div id={props.id} className={styles.RadioButtonList}>

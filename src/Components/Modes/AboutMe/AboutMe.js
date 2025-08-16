@@ -4,6 +4,7 @@ import Skills from "./pages/Skills.js"
 import ContactMe from "./pages/ContactMe.js"
 import MiniNav from "./MiniNav.js";
 import "./AboutMe.css"
+import {BrowserRouter, Routes, Route, Link, Outlet} from "react-router-dom"
 
 /**
  * Should internally have 3 mode: Bio, Skills, and Contact Me
@@ -31,6 +32,7 @@ export function AboutMe({initFeed}){
         {
           text:"Bio",
           initVal:"true",
+          path:"/about-me/bio",
           clickFunc:(()=>{
             setFeed(0);
             return;
@@ -39,6 +41,7 @@ export function AboutMe({initFeed}){
         {
           text:"Skills",
           initVal:"false",
+          path:"/about-me/skills",
           clickFunc:(()=>{
             setFeed(1);
             return;
@@ -47,24 +50,13 @@ export function AboutMe({initFeed}){
         {
           text:"Contact me",
           initVal:"false",
+          path:"/about-me/contact-me",
           clickFunc:(()=>{
             setFeed(2);
             return;
           })
         }
       ];
-      const renderFeed=()=>{
-        switch(feed){
-          case 0:
-            return <Bio/>
-          case 1:
-            return <Skills/>
-          case 2:
-            return <ContactMe/>
-          default:
-            break;
-        }
-      };
       const nameFeed=()=>{
         switch(feed){
           case 0:
@@ -78,11 +70,11 @@ export function AboutMe({initFeed}){
         }
       };
     return (<>
-    <div className="FeedHeader">
-      <h1 className="FeedName">{nameFeed()}</h1>
-      <MiniNav buttonList={buttonList} isDocked={"false"}/>
-    </div>
-    {renderFeed()}
+      <div className="FeedHeader">
+        <h1 className="FeedName">{nameFeed()}</h1>
+          <MiniNav buttonList={buttonList} isDocked={"false"}/>
+      </div>
+      <Outlet/>
     </>
   );
 }
