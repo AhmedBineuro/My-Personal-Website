@@ -13,11 +13,11 @@ export default function MiniNav({buttonList,isDocked}){
     className+=docked?" Dock":"";
     let val=docked===true?"false":"true";
         const loc=useLocation();
-  // eslint-disable-next-line
-  useEffect(()=>{
-    setButtonList(bl.map((button)=>{
-      return {...button,initVal:(loc.pathname.includes(button.path))?true:"false"}
-    }));
+        useEffect(()=>{
+            setButtonList(bl.map((button)=>{
+                return {...button,initVal:(loc.pathname.includes(button.path))?true:"false"}
+            }));
+            // eslint-disable-next-line
       },[loc]);
     return (
     <div className={className}>

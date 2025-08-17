@@ -66,15 +66,16 @@ export function LinkedRadioButtonList(props){
         setButtonList(updatedList);
     };
     const loc=useLocation();
-  // eslint-disable-next-line
-useEffect(()=>{
-    setButtonList(buttonList.map((button)=>{
-      return {...button,initVal:(loc.pathname.includes(button.path))?true:"false"}
-    }));
+    useEffect(()=>{
+        setButtonList(buttonList.map((button)=>{
+            return {...button,initVal:(loc.pathname.includes(button.path))?true:"false"}
+        }));
+        // eslint-disable-next-line
       },[loc]);
     const simpleUpdateList=(newList)=>{
         setButtonList(newList);
     };
+    // eslint-disable-next-line
     useEffect(()=>{if(props.buttonList)simpleUpdateList(props.buttonList)},[props.buttonList]); 
     const buttons = buttonList.map((button, index) =><Link to={button.path}><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/></Link>);
     

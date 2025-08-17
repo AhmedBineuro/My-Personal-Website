@@ -77,6 +77,7 @@ export function AboutMe({initFeed}){
               return;
             }
         }
+        // eslint-disable-next-line
       },[loc]);
       return (<>
       <div className="FeedHeader">
