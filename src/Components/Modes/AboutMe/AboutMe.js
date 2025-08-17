@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Bio from "./pages/Bio.js"
 import Skills from "./pages/Skills.js"
 import ContactMe from "./pages/ContactMe.js"
 import MiniNav from "./MiniNav.js";
 import "./AboutMe.css"
-import {BrowserRouter, Routes, Route, Link, Outlet} from "react-router-dom"
+import {useLocation, Outlet} from "react-router-dom"
 
 /**
  * Should internally have 3 mode: Bio, Skills, and Contact Me
@@ -29,9 +29,9 @@ import {BrowserRouter, Routes, Route, Link, Outlet} from "react-router-dom"
 export function AboutMe({initFeed}){
     const [feed,setFeed]=useState((initFeed===undefined)?0:initFeed);
     const buttonList=[
-        {
-          text:"Bio",
-          initVal:"true",
+      {
+        text:"Bio",
+        initVal:"true",
           path:"/about-me/bio",
           clickFunc:(()=>{
             setFeed(0);
@@ -61,18 +61,30 @@ export function AboutMe({initFeed}){
         switch(feed){
           case 0:
             return "Bio";
-          case 1:
-            return "Skills";
+            case 1:
+              return "Skills";
           case 2:
             return "Contact Me";
           default:
             break;
         }
+        return "";
       };
-    return (<>
+      const [bl]=useState(buttonList);
+      const loc=useLocation();
+    useEffect(()=>{
+        for(let i=0;i<3;i++){
+          if(buttonList[i].path===loc.pathname)
+            {
+              setFeed(i);
+              return;
+            }
+        }
+      },[loc]);
+      return (<>
       <div className="FeedHeader">
         <h1 className="FeedName">{nameFeed()}</h1>
-          <MiniNav buttonList={buttonList} isDocked={"false"}/>
+          <MiniNav buttonList={bl} isDocked={"false"}/>
       </div>
       <Outlet/>
     </>

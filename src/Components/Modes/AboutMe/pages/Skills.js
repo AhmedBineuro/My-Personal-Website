@@ -104,7 +104,7 @@ export default function Skills(){
                 });
             });
             setProjects(projects);
-            console.log(projects);
+            // console.log(projects);
             fetching=false;
             return projects;
     };

@@ -1,16 +1,23 @@
 import { LinkedRadioButtonList, ToggleButton } from "../../Reusable/GlowingGUI"
 import './MiniNav.css'
-import {useState } from 'react';
-import {Link} from "react-router-dom"
+import {useState,useEffect} from 'react';
+import {useLocation} from 'react-router-dom'
 
 export default function MiniNav({buttonList,isDocked}){
     const [docked,setDocked]=useState(isDocked==="true"?true:false);
+    const [bl,setButtonList]=useState(buttonList);
     const updateMode=()=>{
         setDocked(prev => !prev);
     };
     let className="MiniNavContainer";
     className+=docked?" Dock":"";
     let val=docked===true?"false":"true";
+        const loc=useLocation();
+  useEffect(()=>{
+    setButtonList(bl.map((button)=>{
+      return {...button,initVal:(loc.pathname.includes(button.path))?true:"false"}
+    }));
+      },[loc]);
     return (
     <div className={className}>
         <ToggleButton
@@ -20,7 +27,7 @@ export default function MiniNav({buttonList,isDocked}){
         />
         <LinkedRadioButtonList
         className="RadioButtonList"
-        buttonList={buttonList}
+        buttonList={bl}
         id="ABTME"
         />
     </div>
