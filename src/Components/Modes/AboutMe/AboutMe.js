@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-import Bio from "./pages/Bio.js"
-import Skills from "./pages/Skills.js"
-import ContactMe from "./pages/ContactMe.js"
 import MiniNav from "./MiniNav.js";
 import "./AboutMe.css"
 import {useLocation, Outlet} from "react-router-dom"

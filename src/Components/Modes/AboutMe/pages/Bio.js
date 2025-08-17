@@ -1,5 +1,4 @@
 import './Bio.css'
-import {Outlet} from "react-router-dom"
 export default function Bio(){
     return(
         <>

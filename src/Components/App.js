@@ -8,7 +8,7 @@ import Skills from "./Modes/AboutMe/pages/Skills.js"
 import ContactMe from "./Modes/AboutMe/pages/ContactMe.js"
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import { useState,useEffect } from 'react';
-function App({initMode}) {
+function App({}) {
   const buttonList=[
     {
       text:"About me",
@@ -33,6 +33,7 @@ function App({initMode}) {
     }
   ];
     const [bl,setButtonList]=useState(buttonList);
+    // eslint-disable-next-line
     useEffect(()=>{
       setButtonList(bl.map((button)=>{
         return {...button,initVal:(window.location.pathname.includes(button.path))?true:"false"}
