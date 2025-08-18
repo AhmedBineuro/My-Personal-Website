@@ -150,7 +150,7 @@ export default function Skills(){
                 }
             </div>
             <div className="ProjectsList">
-                <MediaCarousel Projects={p} Tags={s}/>
+                <MediaCarousel Projects={p} Tags={tags}/>
             </div>
         </div>
         </div>

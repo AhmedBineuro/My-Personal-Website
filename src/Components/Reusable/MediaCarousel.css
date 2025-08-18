@@ -1,14 +1,32 @@
+.MediaCarouselWrapper{
+    max-width:600px;
+    min-height: 60%;
+    width:100%;
+    margin: 0.5em;
+}
 .MediaCarousel{
     position:relative;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
+    height: 100%;
     padding:0.2em;
     background-color: var(--pane-color);
     border-radius: 0.2em;
-    margin: 0.5em;
+    overflow-x: hidden;
+}
+.ProjectListWrapper{
+    display: flex;
+    flex-direction: row;
+    transform-origin: center;
+    height: 100%;
+    width: 100%;
     overflow-x: scroll;
+}
+.ProjectListWrapper>div>button{
+    max-width: none;
+    width: 100%;
 }
 .MediaCarousel::-webkit-scrollbar{
     display: none;
@@ -16,7 +34,7 @@
 .CarouselButton{
     position: sticky;
     transform-origin: center;
-    top:30%;
+    top:40%;
     padding-left: 1em;
     padding-right: 1em;
     text-align: center;

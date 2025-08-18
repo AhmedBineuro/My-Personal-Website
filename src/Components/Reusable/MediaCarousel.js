@@ -10,13 +10,17 @@ export default function MediaCarousel({Projects,Tags}){
     //     end=index+1;
     // const displayProjects=Projects.subarray(start,end);
     var projectList=[];
-    if(Projects!==undefined)
+    if(Projects!==undefined&&Tags!==undefined)
                 projectList=Projects.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(Tags[tag]!==undefined)?Tags[tag].Name:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
     return (<>
-    <div className="MediaCarousel">
-    <button className="CarouselButton Left">{'<'}</button>
-         {(projectList.length!==0)?projectList:<em className="Error">The relevant projects have not been added yet!</em>}
-    <button className="CarouselButton Right">{'>'}</button>
+    <div className="MediaCarouselWrapper">
+        <div className="MediaCarousel">
+            <button className="CarouselButton Left">{'<'}</button>
+                <div className="ProjectListWrapper">
+                    {(projectList.length!==0)?projectList:<em className="Error">The relevant projects have not been added yet!</em>}
+                </div>
+            <button className="CarouselButton Right">{'>'}</button>
+        </div>
     </div>
     </>)
 }
