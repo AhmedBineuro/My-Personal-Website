@@ -1,0 +1,31 @@
+.MediaCarousel{
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    padding:0.2em;
+    background-color: var(--pane-color);
+    border-radius: 0.2em;
+    margin: 0.5em;
+    overflow-x: scroll;
+}
+.MediaCarousel::-webkit-scrollbar{
+    display: none;
+}
+.CarouselButton{
+    position: sticky;
+    transform-origin: center;
+    top:30%;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    max-height: 8em;
+    z-index: 4;
+}
+.Left{
+        left: 0.5em;
+}
+.Right{
+        right: 0.5em;
+}
