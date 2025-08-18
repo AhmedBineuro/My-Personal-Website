@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {Tag} from "../../../Reusable/Tag.js"
 import styles from '../../../Reusable/MediaContainer.js'
 import  "./Skills.css"
-import MediaContainer from "../../../Reusable/MediaContainer.js";
+import MediaCarousel from "../../../Reusable/MediaCarousel.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAzSjCbYwpY-N55FzhEOF6qqw_CuEdiZl0",
@@ -141,8 +141,6 @@ export default function Skills(){
             ));
 
         var projectList=[];
-        if(p!==undefined)
-            projectList=p.map((project,index)=><MediaContainer key={index} Tags={project.Tags.map(tag=>(tags[tag]!==undefined)?tags[tag].Name:[])} Name={project.Name} URL={project.URL} Thumbnail={project.Thumbnail} />);
     return(
         <div className="SkillsPageWrapper">
         <em>Select a skill to see relevant projects</em>
@@ -153,7 +151,7 @@ export default function Skills(){
                 }
             </div>
             <div className="ProjectsList">
-                {(projectList.length!==0)?projectList:<em className="Error">The relevant projects have not been added yet!</em>}
+                <MediaCarousel Projects={p} Tags={s}/>
             </div>
         </div>
         </div>
