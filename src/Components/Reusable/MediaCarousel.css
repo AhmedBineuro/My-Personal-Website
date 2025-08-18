@@ -20,16 +20,26 @@
     display: flex;
     flex-direction: row;
     transform-origin: center;
+    justify-content: space-evenly;
+    vertical-align: middle;
     height: 100%;
     width: 100%;
+    padding:0.5em;
     overflow-x: scroll;
 }
 .ProjectListWrapper>div>button{
     max-width: none;
-    width: 100%;
+    width: 90%;
+}
+.ProjectListWrapper>div{
+    width: fit-content;
+    margin: 0;
 }
 .MediaCarousel::-webkit-scrollbar{
     display: none;
+}
+.ProjectListWrapper>div:hover,.ProjectListWrapper>div:focus{
+    transform: scale(105%,105%);
 }
 .CarouselButton{
     position: relative;
