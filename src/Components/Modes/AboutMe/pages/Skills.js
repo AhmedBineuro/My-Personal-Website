@@ -140,7 +140,6 @@ export default function Skills(){
                 ClickFunction={ClickFunctions[index]}/>):<></>
             ));
 
-        var projectList=[];
     return(
         <div className="SkillsPageWrapper">
         <em>Select a skill to see relevant projects</em>

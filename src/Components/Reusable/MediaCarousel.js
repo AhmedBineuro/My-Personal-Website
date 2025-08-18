@@ -1,7 +1,5 @@
 import MediaContainer from "./MediaContainer.js"
 import './MediaCarousel.css'
-import { Tag } from "./Tag"
-import { useState } from "react";
 export default function MediaCarousel({Projects,Tags}){
     // const [index,setIndex] = useState((Projects.length()/2)-1);
     // let start=((index-1)<0)?(0):(index-1);
