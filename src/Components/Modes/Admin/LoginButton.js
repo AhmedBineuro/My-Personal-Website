@@ -62,8 +62,6 @@ export default function LoginButton({SignOutCallback,successCallback,errorCallba
                         }
                     else
                     {
-                        console.log("Bad email:",email);
-                        console.log(whitelist);
                         const badUser=auth.currentUser;
                         deleteUser(badUser).then(()=>{
                             errorCallback("Account and information deleted, you are not an admin");

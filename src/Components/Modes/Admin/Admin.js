@@ -23,7 +23,6 @@ export default function Admin(){
     var [error,setError]=useState(showError);
     logged=(auth.currentUser!==null)
     var [success,setSucess]=useState(logged);
-    console.log(logged);
     const errorCallback=(error)=>{
         setSucess(false);
         showError=true;
@@ -42,7 +41,6 @@ export default function Admin(){
         setError(showError);
         setSucess(false);
         setEditor(false);
-        console.log("Signed out");
     }
     return(
         <>
