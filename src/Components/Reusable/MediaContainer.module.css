@@ -109,9 +109,14 @@ button.Tag:hover{
 }
 .MediaContainerWrapper{
     position: relative;
+    display: flex;
     min-width: fit-content;
     min-height: fit-content;
+    justify-content: center;
+    align-items: center;
     margin: 0.5em;
+    padding: 0;
+    overflow: visible;
     transform: scale(100%,100%);
     animation: fadeIn 0.7s ease-in-out;
     transition: all 0.2s;
