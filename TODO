@@ -7,7 +7,8 @@
   - [X] Finish the Skills
     - [X] Finish project showcasing algorithm
     - [X] Finish project filtering algorithm
-    - [X] Finish project carousel
+    - [ ] Finish project carousel
+      - [ ] Add index approximation according to current scroll left value
     - [ ] Add action points
   - [x] Finish the Contact me
     - [x] Finish Contact form
