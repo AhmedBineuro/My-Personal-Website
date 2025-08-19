@@ -33,7 +33,7 @@ export default function MediaCarousel({Projects,Tags}){
         let dist=increment*newIndex;
         index=newIndex;
         
-        projectDisplay.scrollLeft=dist;
+        projectDisplay.scrollTo({left:dist, behavior:"smooth"});
     };
     return (<>
     <div className="MediaCarouselWrapper">

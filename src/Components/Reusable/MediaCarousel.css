@@ -60,17 +60,34 @@
     box-shadow:  0em 0em 2em 1em inset var(--containerFocus-color);
     }
 }
+
 .CarouselButton{
     position: relative;
     transform-origin: center;
-    vertical-align: middle;
-    padding-left: 1em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
     padding-right: 1em;
+    padding-left: 1em;
+    outline: none;
+    border: none;
+    border-radius: 0.2em;
+    font-weight:bold ;
+    background-color: var(--buttonOff-color);
+    color: var(--text-color);
+    transition: all 0.7s ease-in-out;
     text-align: center;
     height: 45%;
-    z-index: 4;
-    margin: 0.5em;
 }
+.CarouselButton:hover,.CarouselButton:focus{
+    background-color: var(--buttonOn-color);
+    box-shadow: 0 0 1em 10px var(--buttonShadow-color);
+    color:white;
+}
+
+
+
+
+
 @media only screen and (max-width:570px) {
     /*The Media Name*/
     .ProjectListWrapper>div>button>div>h1{
