@@ -31,7 +31,6 @@ export default function MediaCarousel({Projects,Tags}){
         else if(newIndex<0)
             newIndex=projectList.length-1;
         let dist=increment*newIndex;
-        console.log("Index: ",index,"\tManual Index:",parseInt(manualScrolled/increment),"\tDecided Index: ",newIndex);
         index=newIndex;
         
         projectDisplay.scrollLeft=dist;
