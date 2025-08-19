@@ -54,7 +54,7 @@ export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
         }
         <button className={styles.MediaContainer} onClick={((e)=>window.open(URL,`_blank`))}>
             <div className='ThumbnailTitlePair'>
-                <h1 className={ styles.MediaName}>{Name}</h1>
+                <h1 className={styles.MediaName}>{Name}</h1>
                 <img alt={Name+" thumbnail image"}className={ styles.MediaImage} src={(Thumbnail!==undefined)?Thumbnail:"https://firebasestorage.googleapis.com/v0/b/dynamicbineurowebsite.firebasestorage.app/o/testImg.png?alt=media&token=485a6dde-9ef3-4cf9-8504-f6e4fbeb7fca"}/>
             </div>
             <div className={ styles.TagList}>
