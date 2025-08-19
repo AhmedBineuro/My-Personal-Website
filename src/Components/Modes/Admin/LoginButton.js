@@ -20,7 +20,7 @@ const auth=getAuth(app);
 const googleAuth=new GoogleAuthProvider();
 export default function LoginButton({SignOutCallback,successCallback,errorCallback}){
     var whitelist=[];
-    var showEditor=false, showSignIn=(!auth.currentUser&&(whitelist.length>0)),
+    var showSignIn=(!auth.currentUser&&(whitelist.length>0)),
     showSignOut=(auth.currentUser!==null);
     var [signIn,setSignIn]=useState(showSignIn);
     var [signOut,setSignOut]=useState(showSignOut);
@@ -35,7 +35,9 @@ export default function LoginButton({SignOutCallback,successCallback,errorCallba
     //Get the whitelist
     useEffect(()=>{
      getWhiteList().then(()=>{
+        // eslint-disable-next-line
         showSignIn=(!auth.currentUser);
+        // eslint-disable-next-line
         showSignOut=(auth.currentUser!==null);
         setSignIn(showSignIn);
         setSignOut(showSignOut);
@@ -45,7 +47,7 @@ export default function LoginButton({SignOutCallback,successCallback,errorCallba
                 <>
             {
                 (signIn)?(<button className="SignIn" onClick={()=>{
-                const userCredentials=signInWithPopup(auth,googleAuth)
+                signInWithPopup(auth,googleAuth)
                 .then((result)=>{
                     const user=result.user;
                     const email=user.email;

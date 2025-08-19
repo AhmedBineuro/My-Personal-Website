@@ -1,5 +1,4 @@
 import { initializeApp} from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import LoginButton from "./LoginButton";
@@ -18,9 +17,9 @@ const firebaseConfig = {
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 var currentError=""
-var showEditor=false,showError=false,logged=false;
+var showError=false,logged=false;
 export default function Admin(){
-    var [editor,setEditor]=useState(showEditor);
+    var [editor,setEditor]=useState(false);
     var [error,setError]=useState(showError);
     logged=(auth.currentUser!==null)
     var [success,setSucess]=useState(logged);
@@ -35,12 +34,14 @@ export default function Admin(){
         showError=false;
         setSucess(true);
         setError(showError);
+        setEditor(true);
     }
     const signOutCallback=()=>{
         showError=false;
         currentError="";
         setError(showError);
         setSucess(false);
+        setEditor(false);
         console.log("Signed out");
     }
     return(
@@ -56,6 +57,9 @@ export default function Admin(){
                 <h1 className="Greeting">Hello</h1>
                 <h1 className="GreetingName"> {(auth.currentUser===null)?"None":auth.currentUser.displayName}</h1>
                 </div>):(<></>)
+            }
+            {
+                (editor)?(<></>):(<></>)
             }
         </>
     );
