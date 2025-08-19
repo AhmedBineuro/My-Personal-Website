@@ -23,16 +23,18 @@ export default function MediaCarousel({Projects,Tags}){
         if(projectList.length===0)
             return
         let increment=(width/projectList.length);
-        let newIndex=index+direction;
+        let manualScrolled=parseInt((projectDisplay.scrollLeft));
+        let compDist=parseInt(index*increment);
+        let newIndex= (Math.abs(compDist-manualScrolled)>increment)?parseInt(manualScrolled/increment)+direction:index+direction;
         if(newIndex>=projectList.length)
             newIndex=0;
         else if(newIndex<0)
             newIndex=projectList.length-1;
-        index=newIndex;
         let dist=increment*newIndex;
-        console.log(dist);
-        projectDisplay.scroll({left:dist});
-        console.log(index);
+        console.log("Index: ",index,"\tManual Index:",parseInt(manualScrolled/increment),"\tDecided Index: ",newIndex);
+        index=newIndex;
+        
+        projectDisplay.scrollLeft=dist;
     };
     return (<>
     <div className="MediaCarouselWrapper">
