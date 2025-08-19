@@ -77,7 +77,7 @@ export function LinkedRadioButtonList(props){
     };
     // eslint-disable-next-line
     useEffect(()=>{if(props.buttonList)simpleUpdateList(props.buttonList)},[props.buttonList]); 
-    const buttons = buttonList.map((button, index) =><Link to={button.path}><ToggleButton key={index} index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/></Link>);
+    const buttons = buttonList.map((button, index) =><Link key={index} to={button.path}><ToggleButton index={index} onUpdate={updateList} clickFunc={button.clickFunc} text={button.text} initVal={button.initVal}/></Link>);
     
     return(
     <div id={props.id} className={styles.RadioButtonList}>
