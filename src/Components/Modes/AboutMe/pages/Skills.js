@@ -147,7 +147,7 @@ export default function Skills(){
             });
         
         const clickFunc=(e,index)=>{
-            window.open(p[index].URL,`_blank`);
+            setAction(p[index].Action.map((action)=>(<li key={Math.random()} className="ActionItem">{action}</li>)));
             return;
         }
         const scrollFunc=(index)=>{
