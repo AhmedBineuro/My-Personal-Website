@@ -10,5 +10,5 @@ The website is currently hosted [here](https://dynamicbineuro.com)!
 
 ## What is being worked on right now
 
-- Finalizing the design of the skills page and adding action points
 - Writing action points for each project
+- Admin tools

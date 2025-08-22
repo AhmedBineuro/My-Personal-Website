@@ -1,15 +1,15 @@
 # Current Todos
 
-- [ ] Finish the about me page
+- [X] Finish the about me page
   - [x] Finish the Bio
     - [x] Finish the content text
     - [x] Finish the design
   - [X] Finish the Skills
     - [X] Finish project showcasing algorithm
     - [X] Finish project filtering algorithm
-    - [ ] Finish project carousel
-      - [ ] Add index approximation according to current scroll left value
-    - [ ] Add action points
+    - [X] Finish project carousel
+      - [X] Add index approximation according to current scroll left value
+    - [X] Add action points
   - [x] Finish the Contact me
     - [x] Finish Contact form
     - [x] Finish Adding socials
