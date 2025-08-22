@@ -92,11 +92,11 @@ export default function MediaCarousel({Projects,Tags,clickFunc,scrollFunc}){
     return (<>
     <div className="MediaCarouselWrapper">
         <div className="MediaCarousel">
-            <button className="CarouselButton Left" onClick={scrollProject}>{'<'}</button>
-                <div id="ProjectDisplay" className="ProjectListWrapper" onTouchEnd={onscroll} onScrollEnd={onscroll}>
+            <button className="CarouselButton Left" onTouchEnd={scrollProject} onClick={scrollProject}>{'<'}</button>
+                <div id="ProjectDisplay" className="ProjectListWrapper" onScrollEnd={onscroll}>
                     {(projectList.length!==0)?projectList:<em className="Error">The relevant projects have not been added yet!</em>}
                 </div>
-            <button className="CarouselButton Right" onClick={scrollProject}>{'>'}</button>
+            <button className="CarouselButton Right" onTouchEnd={scrollProject} onClick={scrollProject}>{'>'}</button>
         </div>
     </div>
     </>)
