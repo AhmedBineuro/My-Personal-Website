@@ -63,6 +63,7 @@ function getColors( startingColor,endingColor){
 export default function Skills(){
     const [s,setSkills]=useState(((skills!==undefined)?skills:[]));
     const [p,setProjects]=useState(((projects!==undefined)?projects:[]));
+    const [a,setAction]=useState([]);
     let startingColor=[];
     let endingColor=[];
     [startingColor,endingColor]=getColors();
@@ -77,6 +78,7 @@ export default function Skills(){
                     IsSkill:doc.data().IsSkill
                 });
                 tags[doc.id]={
+                    id: doc.data().id,
                     Name: doc.data().Name,
                     IsSkill:doc.data().IsSkill
                 };
@@ -100,10 +102,12 @@ export default function Skills(){
                     Tags:doc.data().Tags,
                     Thumbnail:doc.data().Thumbnail,
                     URL:doc.data().URL,
-                    DURL:doc.data().DURL
+                    DURL:doc.data().DURL,
+                    Action:doc.data().Action
                 });
             });
             setProjects(projects);
+            setAction((projects.length>0)?(projects[0].Action.map((action)=>(<li key={Math.random()} className="ActionItem">{action}</li>))):[]);
             // console.log(projects);
             fetching=false;
             return projects;
@@ -130,16 +134,26 @@ export default function Skills(){
         }
         
         var skillList=[];
-            if(s!==undefined)
-                skillList=s.map((skill,index)=>(
-                ((colors.length>0)&&skill.IsSkill)?(<Tag Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} 
-                key={index} 
-                className={styles.Tag} 
-                Text={skill.Name} 
-                Clickable={true} 
-                ClickFunction={ClickFunctions[index]}/>):<></>
-            ));
-
+            if(s!==undefined && colors)
+                skillList=s.map((skill,index)=>{
+                    if((colors[index]!==undefined)&&(colors.length>0)&&skill.IsSkill)
+                        return (<Tag key={index} 
+                        Style={{backgroundColor:("hsl("+colors[index][0]+", "+colors[index][1]+"%, "+colors[index][2]+"%)")}} 
+                        className={styles.Tag} 
+                        Text={skill.Name} 
+                        Clickable={true} 
+                        ClickFunction={ClickFunctions[index]}/>)
+                return null
+            });
+        
+        const clickFunc=(e,index)=>{
+            window.open(p[index].URL,`_blank`);
+            return;
+        }
+        const scrollFunc=(index)=>{
+            setAction(p[index].Action.map((action)=>(<li key={Math.random()} className="ActionItem">{action}</li>)));
+            return;
+        };
     return(
         <div className="SkillsPageWrapper">
         <em>Select a skill to see relevant projects</em>
@@ -150,7 +164,12 @@ export default function Skills(){
                 }
             </div>
             <div className="ProjectsList">
-                <MediaCarousel Projects={p} Tags={tags}/>
+                <MediaCarousel clickFunc={clickFunc} scrollFunc={scrollFunc} Projects={p} Tags={tags}/>
+                <ul>
+                    {
+                        a
+                    }
+                </ul>
             </div>
         </div>
         </div>

@@ -8,13 +8,15 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    min-width: 60%;
     width: 100%;
     height: 100%;
     padding:0.5em;
     background-color: var(--pane-color);
     border-radius: 0.2em;
     overflow: hidden;
-    overflow-y: visible;
+    overflow-y: hidden;
+    margin:0;
 }
 .ProjectListWrapper{
     display: flex;
@@ -25,7 +27,7 @@
     height: 100%;
     width: 100%;
     margin:0;
-    overflow-y: visible;
+    overflow-y: hidden;
     overflow-x: scroll;
     transform-origin: 0% 50%;
 }
@@ -64,10 +66,12 @@
 .CarouselButton{
     position: relative;
     transform-origin: center;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     padding-right: 1em;
     padding-left: 1em;
+    padding-top: 3em;
+    padding-bottom: 3em;
     outline: none;
     border: none;
     border-radius: 0.2em;
@@ -77,6 +81,7 @@
     transition: all 0.7s ease-in-out;
     text-align: center;
     height: 45%;
+    cursor: pointer;
 }
 .CarouselButton:hover,.CarouselButton:focus{
     background-color: var(--buttonOn-color);

@@ -140,7 +140,7 @@ export function Projects(){
                     Tags:doc.data().Tags,
                     Thumbnail:doc.data().Thumbnail,
                     URL:doc.data().URL,
-                    DURL:doc.data().DURL
+                    DURL:doc.data().DURL,
                 });
             });
             if(!FilterProjects())

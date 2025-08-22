@@ -12,9 +12,10 @@ function interpolate(color1, color2, t){
         Math.round(color1[2]*(1-t)+color2[2]*t)
     ];
 }
-export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
+export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL,clickFunc}){
     let colors=[];
-
+    if(!clickFunc)
+        clickFunc=(clickFunc===undefined)?((()=>window.open(URL,`_blank`))):clickFunc;
     //Fetch tag colors
     let root=getComputedStyle(document.documentElement);
     let tagStart=root.getPropertyValue("--tagStart-color");
@@ -48,11 +49,11 @@ export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL}){
     return(   
     <div className={styles.MediaContainerWrapper}>
         {(DURL!==undefined)?(
-            <button className={styles.DownloadButton} onClick={((e)=>window.open(DURL,`_blank`))}>
+            <button className={styles.DownloadButton} onClick={clickFunc}>
             </button>
-            ):<></>
+            ):null
         }
-        <button className={styles.MediaContainer} onClick={((e)=>window.open(URL,`_blank`))}>
+        <button className={styles.MediaContainer} onClick={clickFunc}>
             <div className='ThumbnailTitlePair'>
                 <h1 className={styles.MediaName}>{Name}</h1>
                 <img alt={Name+" thumbnail image"}className={ styles.MediaImage} src={(Thumbnail!==undefined)?Thumbnail:"https://firebasestorage.googleapis.com/v0/b/dynamicbineurowebsite.firebasestorage.app/o/testImg.png?alt=media&token=485a6dde-9ef3-4cf9-8504-f6e4fbeb7fca"}/>
