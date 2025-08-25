@@ -43,19 +43,10 @@ function getColors( startingColor,endingColor){
     const parsedEnd=[];
     matchedStart.forEach((m)=>{parsedStart.push(m.match(/[0-9]{1,3}/g))});
     matchedEnd.forEach((m)=>{parsedEnd.push(m.match(/[0-9]{1,3}/g))});
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
     var start=[];
     var end=[];
-    if(isLightMode)
-    {
-        parsedStart[0].forEach((p)=>{start.push(parseInt(p))});
-        parsedEnd[0].forEach((p)=>{end.push(parseInt(p))});
-    }
-    else
-    {
-        parsedStart[1].forEach((p)=>{start.push(parseInt(p))});
-        parsedEnd[1].forEach((p)=>{end.push(parseInt(p))});
-    }
+    parsedStart[0].forEach((p)=>{start.push(parseInt(p))});
+    parsedEnd[0].forEach((p)=>{end.push(parseInt(p))});
     return [start,end];
 }
 

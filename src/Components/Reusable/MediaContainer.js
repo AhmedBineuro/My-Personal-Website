@@ -27,19 +27,10 @@ export default function MediaContainer({Name,Tags,Thumbnail,URL,DURL,clickFunc})
     
     matchedStart.forEach((m)=>{parsedStart.push(m.match(/[0-9]{1,3}/g))});
     matchedEnd.forEach((m)=>{parsedEnd.push(m.match(/[0-9]{1,3}/g))});
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
     let startingColor=[];
     let endingColor=[];
-    if(isLightMode)
-    {
-        parsedStart[0].forEach((p)=>{startingColor.push(parseInt(p))});
-        parsedEnd[0].forEach((p)=>{endingColor.push(parseInt(p))});
-    }
-    else
-    {
-        parsedStart[1].forEach((p)=>{startingColor.push(parseInt(p))});
-        parsedEnd[1].forEach((p)=>{endingColor.push(parseInt(p))});
-    }
+    parsedStart[0].forEach((p)=>{startingColor.push(parseInt(p))});
+    parsedEnd[0].forEach((p)=>{endingColor.push(parseInt(p))});
     //End of tag color fetch
     
     for(let i=1;i<=Tags.length;i++){
